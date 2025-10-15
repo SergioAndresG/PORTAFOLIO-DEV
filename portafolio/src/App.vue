@@ -1,15 +1,14 @@
+<script setup lang="ts">
+import { useRouter } from 'vue-router';
+
+const route = useRouter()
+
+</script>
+
 <template>
-  <header>
-    <h1>Mi Portafolio</h1>
-  </header>
-  <main>
-    <!-- El contenido de tus páginas irá aquí -->
-  </main>
+    <router-view/>
 </template>
 
 <style scoped>
-/* Puedes empezar tus estilos aquí */
-h1 {
-  text-align: center;
-}
+
 </style>

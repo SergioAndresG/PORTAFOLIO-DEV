@@ -58,7 +58,7 @@ onUnmounted(() => {
 
     <!-- Contenedor para la imagen -->
     <div class="imagen-container">
-      <img src="../assets/images/ImagenPortafolio.jpg" alt="Sergio Garcia" class="imagen">
+      <img src="../assets/images/ImagenPor.png" alt="Sergio Garcia" class="imagen">
     </div>
   </div>
 
@@ -71,7 +71,7 @@ onUnmounted(() => {
   <section class="about-me-container" :class="{ 'visible': aboutMeVisible }">
     <h2 class="about-me">Sobre Mí</h2>
     <div class="about-content">
-      <p>Aquí va tu descripción personal...</p>
+      <p>Hola, Soy Sergio Andres, un desarrollador apaionadao por el </p>
     </div>
   </section>
 </template>
@@ -181,18 +181,21 @@ onUnmounted(() => {
 /* === IMAGEN === */
 .imagen-container {
   flex-shrink: 0;
+  position: relative;
   opacity: 0;
-  transform: translateX(50px);
+  transform: translateX(40px);
   animation: aparecer-imagen 1.5s 2.5s ease-out forwards;
 }
 
 .imagen {
-  height: 500px;
-  width: 500px;
+  position: relative;
+  left: -5rem;
+  height: 370px;
+  width: 370px;
   object-fit: cover;
-  border-radius: 20%;
+  border-radius: 50%;
   border: 2px solid #616161;
-  padding: 3px;
+  padding: 1px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -203,7 +206,6 @@ onUnmounted(() => {
 
 /* === SECCIÓN SOBRE MÍ === */
 .about-me-container {
-  margin-top: 15rem;
   padding: 4rem 2rem;
   max-width: 1200px;
   margin-left: auto;

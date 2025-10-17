@@ -71,7 +71,26 @@ onUnmounted(() => {
   <section class="about-me-container" :class="{ 'visible': aboutMeVisible }">
     <h2 class="about-me">Sobre Mí</h2>
     <div class="about-content">
-      <p>Hola, Soy Sergio Andres, un desarrollador apaionadao por el </p>
+        <p>
+            Soy Sergio Andrés, Tecnólogo en Análisis y Desarrollo de Software, y me emociona la idea de que “Lo que se puede imaginar, se puede programar”. <br>
+        </p>
+
+        <p>
+            Para mí, el desarrollo es mucho más que escribir código: es dar vida a soluciones que mejoran la vida de las personas. 
+        </p>
+
+        <p> 
+            Tengo experiencia autónoma en desarrollo web Full Stack, creando proyectos donde la lógica y el diseño se 
+            unen para lograr experiencias funcionales y atractivas.
+            Fuera del código, soy una persona colaborativa, empática y 
+            comprometida. 
+        </p>
+
+        <p>
+            Disfruto trabajar en equipo, conocer a las 
+            personas detrás de cada proyecto y aprender de ellas, porque 
+            creo que las mejores soluciones nacen del entendimiento y la pasión compartida.
+        </p>
     </div>
   </section>
 </template>
@@ -223,10 +242,10 @@ onUnmounted(() => {
 
 .about-me {
   color: #ffffff;
-  font-size: clamp(3rem, 5vw, 5rem);
+  font-size: clamp(3rem, 4vw, 5rem);
   font-weight: 900;
-  margin-bottom: 2rem;
-  letter-spacing: -1px;
+  margin-bottom: 4rem;
+  letter-spacing: 1px;
 }
 
 .about-content {
@@ -235,6 +254,11 @@ onUnmounted(() => {
   line-height: 1.8;
   max-width: 800px;
   margin: 0 auto;
+}
+
+.about-content p {
+  margin-bottom: 2rem;
+
 }
 
 /* === ANIMACIONES === */

@@ -61,6 +61,7 @@ const closeMenu = () => {
 </template>
 
 <style scoped>
+
 header {
   position: fixed;
   top: 0;
@@ -106,7 +107,7 @@ header {
 /* Animación cuando está activo (X) */
 .hamburger-button.active .line:nth-child(1) {
   transform: rotate(45deg) translate(4px, 8px);
-  background: rgb(0, 255, 42);
+  background: #1E90FF;
 }
 
 .hamburger-button.active .line:nth-child(2) {
@@ -116,12 +117,13 @@ header {
 
 .hamburger-button.active .line:nth-child(3) {
   transform: rotate(-45deg) translate(4px, -8px);
-  background: rgb(0, 255, 42);
+  background:  #1E90FF;
+;
 }
 
 /* Hover del botón */
 .hamburger-button:hover .line {
-  background: rgb(0, 255, 42);
+  background: #1E90FF;
 }
 
 /* ========== MENÚ ========== */
@@ -156,7 +158,7 @@ a {
   padding: 20px;
 }
 a:hover {
-  color: rgb(0, 255, 42);
+  color: #1E90FF;
   transform: translateY(-5px);
 }
 /* Overlay oscuro */

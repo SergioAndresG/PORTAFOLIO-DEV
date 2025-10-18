@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import Header from '../components/Header.vue'
+import { icon } from '@fortawesome/fontawesome-svg-core'
+import { fab, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 const svgReady = ref(false)
 const lineWidth = ref(0)
@@ -54,7 +56,21 @@ onUnmounted(() => {
       
       <h2 class="nombre-solido">GARCIA</h2>
       <p class="dev">Desarrollador de Software</p>
+          <div class="redes-container">
+      <a href="https://www.linkedin.com/in/sergio-garcia-232b86335/">
+        <font-awesome-icon :icon="['fab', 'linkedin']"  size="100px"/>      
+      </a>
+      <a href="https://www.instagram.com/dres.hp?utm_source=qr&igsh=ZmcydTV2a2E4aXBz">
+        <font-awesome-icon :icon="['fab', 'instagram']"  />      
+      </a> 
+      <a href="https://github.com/SergioAndresG/">
+        <font-awesome-icon :icon="['fab', 'github']"  />      
+      </a> 
     </div>
+    </div>
+
+
+
 
     <!-- Contenedor para la imagen -->
     <div class="imagen-container">
@@ -185,16 +201,44 @@ onUnmounted(() => {
 
 .dev {
   font-size: clamp(1.1rem, 1.5vw, 1.8rem);
-  color: #adadad;
+  color: #1E90FF;
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-top: -6rem;
-  margin-left: 3.5rem;
+  margin-left: 8.5rem;
   user-select: none;
   opacity: 0;
   transform: translateY(-20px);
   font-weight: 300;
-  animation: aparecer-dev 1.2s 3s ease-out forwards;
+  animation: 
+        aparecer-dev 1.2s 3s ease-out forwards,
+        flotar 2.3s ease-in-out infinite alternate;
+  transition: all 0.3s ease-in-out;
+}
+
+.dev:hover{
+  text-shadow: 0 0 5px #616161;
+  color: #d0d0d0;
+  scale: 1.03;
+}
+
+.redes-container {
+  display: flex;
+  margin-left: 16rem;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.redes-container svg {
+  color: #d0d0d0;
+  width: 50px;
+}
+
+.redes-container a svg {
+  font-size: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: aparecer-redes 1.2s 3s ease-out forwards;
 }
 
 /* === IMAGEN === */
@@ -202,15 +246,15 @@ onUnmounted(() => {
   flex-shrink: 0;
   position: relative;
   opacity: 0;
-  transform: translateX(40px);
+  transform: translateY(40px);
   animation: aparecer-imagen 1.5s 2.5s ease-out forwards;
 }
 
 .imagen {
   position: relative;
   left: -5rem;
-  height: 370px;
-  width: 370px;
+  height: 390px;
+  width: 395px;
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid #616161;
@@ -282,10 +326,29 @@ onUnmounted(() => {
   }
 }
 
+@keyframes aparecer-redes {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flotar {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 @keyframes aparecer-imagen {
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 

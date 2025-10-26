@@ -123,13 +123,12 @@ onMounted(() => {
 </script>
 
 <template>
-    <!-- Línea animada con scroll -->
-    <div class="linea-container">
-        <hr class="linea-scroll" :style="{ width: lineWidth + 'px' }">
-    </div>
+  <!-- Línea animada con scroll -->
+  <div class="linea-container">
+    <hr class="linea-scroll" :style="{ width: lineWidth + 'px' }">
+  </div>
 
-
-  <section class="tech-stack-section" :class=" {'visible': StackVisible}">
+  <section class="tech-stack-section" :class="{'visible': StackVisible}">
     <!-- Efectos de fondo -->
     <div class="background-effects">
       <div class="blob blob-1"></div>
@@ -137,7 +136,7 @@ onMounted(() => {
     </div>
 
     <div class="container">
-      <!-- Header -->
+      <!-- Header principal -->
       <div class="header" :class="{ visible }">
         <h2 class="title">Tech Stack</h2>
         <p class="subtitle">
@@ -145,82 +144,116 @@ onMounted(() => {
         </p>
       </div>
 
-      <!-- Grid de tecnologías -->
-      <h2 class="tech-title">Backend</h2>
-
-      <div class="tech-grid">
-        <div
-          v-for="(tech, index) in techs.filter(t => t.category === 'Backend')"
-          :key="tech.name"
-          class="tech-card"
-          :class="{ visible }"
-          :style="{ 
-            transitionDelay: `${index * 100}ms`,
-            '--tech-color': tech.color
-          }"
-        >
-          <div class="card-glow"></div>
-          <div class="card-content">
-            <img class="tech-icon" :src="tech.icon" />
-            <h3 class="tech-name">{{ tech.name }}</h3>
-            <span class="tech-category">{{ tech.category }}</span>
-          </div>
-          <div class="hover-indicator"></div>
-        </div>
-      </div>
-      <h2 class="tech-title">Frontend</h2>
-      <div class="tech-grid">
-        <div
-        v-for="(tech, index) in techs.filter(t => t.category == 'Frontend')"
-        :key="tech.name"
-        class="tech-card"
-        :class="{visible}"
-        :style="{
-          transitionDelay: `${index * 100}ms`,
-          '--tech-color': tech.color
-        }"
-        >
-        
-        <div class="card-glow"></div>
-        
-        <div class="card-content">
-          <img class="tech-icon" :src="tech.icon" />
-          <h3 class="tech-name">{{ tech.name }}</h3>
-          <span class="tech-category">{{ tech.category }}</span>
-        </div>
-        <div class="hover-indicator"></div>
-      </div>
-      </div>
-      <h2 class="tech-title">Tools</h2>
+      <!-- BACKEND -->
+      <div class="tech-category">
+        <h3 class="tech-title">Backend</h3>
         <div class="tech-grid">
-        <div
-          v-for="(tech, index) in techs.filter(t => t.category === 'Tools')"
-          :key="tech.name"
-          class="tech-card"
-          :class="{ visible }"
-          :style="{ 
-            transitionDelay: `${index * 100}ms`,
-            '--tech-color': tech.color,
-          }"
-        >
-          <div class="card-glow"></div>
-          <div class="card-content">
-            <img class="tech-icon" :src="tech.icon" 
-              :style="{ 
-                  filter: tech.name === 'GitHub' ? 'invert(1) brightness(2)' : 'none' 
-              }"
-            />
-            <h3 class="tech-name">{{ tech.name }}</h3>
-            <span class="tech-category">{{ tech.category }}</span>
+          <div
+            v-for="(tech, index) in techs.filter(t => t.category === 'Backend')"
+            :key="tech.name"
+            class="tech-card"
+            :class="{ visible }"
+            :style="{ 
+              transitionDelay: `${index * 100}ms`,
+              '--tech-color': tech.color
+            }"
+          >
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <img class="tech-icon" :src="tech.icon" :alt="tech.name" />
+              <h3 class="tech-name">{{ tech.name }}</h3>
+            </div>
+            <div class="hover-indicator"></div>
           </div>
-          <div class="hover-indicator"></div>
         </div>
       </div>
+
+      <!-- FRONTEND -->
+      <div class="tech-category">
+        <h3 class="tech-title">Frontend</h3>
+        <div class="tech-grid tech-grid-horizontal">
+          <div
+            v-for="(tech, index) in techs.filter(t => t.category === 'Frontend')"
+            :key="tech.name"
+            class="tech-card"
+            :class="{ visible }"
+            :style="{
+              transitionDelay: `${index * 100}ms`,
+              '--tech-color': tech.color
+            }"
+          >
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <img class="tech-icon" :src="tech.icon" :alt="tech.name" />
+              <h3 class="tech-name">{{ tech.name }}</h3>
+            </div>
+            <div class="hover-indicator"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOLS -->
+      <div class="tech-category">
+        <h3 class="tech-title">Tools</h3>
+        <div class="tech-grid">
+          <div
+            v-for="(tech, index) in techs.filter(t => t.category === 'Tools')"
+            :key="tech.name"
+            class="tech-card"
+            :class="{ visible }"
+            :style="{ 
+              transitionDelay: `${index * 100}ms`,
+              '--tech-color': tech.color
+            }"
+          >
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <img 
+                class="tech-icon" 
+                :src="tech.icon" 
+                :alt="tech.name"
+                :style="{ 
+                  filter: tech.name === 'GitHub' ? 'invert(1) brightness(2)' : 'none' 
+                }"
+              />
+              <h3 class="tech-name">{{ tech.name }}</h3>
+            </div>
+            <div class="hover-indicator"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DATABASE (opcional, tienes MySQL) -->
+      <div class="tech-category" v-if="techs.filter(t => t.category === 'Database').length > 0">
+        <h3 class="tech-title">Database</h3>
+        <div class="tech-grid">
+          <div
+            v-for="(tech, index) in techs.filter(t => t.category === 'Database')"
+            :key="tech.name"
+            class="tech-card"
+            :class="{ visible }"
+            :style="{ 
+              transitionDelay: `${index * 100}ms`,
+              '--tech-color': tech.color
+            }"
+          >
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <img class="tech-icon" :src="tech.icon" :alt="tech.name" />
+              <h3 class="tech-name">{{ tech.name }}</h3>
+            </div>
+            <div class="hover-indicator"></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 </template>
 
 <style scoped>
+
+
 /* === LÍNEAS DIVISORAS === */
 .linea-superior {
   width: 200px;
@@ -234,7 +267,7 @@ onMounted(() => {
 .linea-container {
   display: flex;
   justify-content: center;
-  margin-top: 10rem;
+  margin-top: 5rem;
   padding: 0 2rem;
 }
 
@@ -251,7 +284,7 @@ onMounted(() => {
 }
 .tech-stack-section {
   position: relative;
-  padding: 5rem 0;
+  padding: 1rem 0;
   overflow: hidden;
   min-height: 100vh;
 }
@@ -303,6 +336,10 @@ onMounted(() => {
   text-align: center;
 }
 
+.tech-category {
+  margin-bottom: 3rem; /* Espacio entre categorías */
+}
+
 /* Header */
 .header {
   text-align: center;
@@ -332,32 +369,59 @@ onMounted(() => {
 
 /* Grid de tecnologías */
 .tech-grid {
-  max-width: 1000px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
-  margin-bottom: 4rem;
-  margin-left: 8rem;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* ← Más pequeño */
+  gap: 1rem; /* ← Más espacio interno */
+  padding: 1.5rem; /* ← Agregar padding interno */
+  background: rgba(30, 41, 59, 0.5); /* ← Fondo de la caja */
+  border: 1px solid #475569;
+  border-radius: 1rem; /* ← Redondear todo el contenedor */
+  margin-bottom: 0;
+  transition: border-color 0.3s ease;
 }
 
+.tech-grid:hover {
+  border-color: #64748b; /* ← Efecto hover en la caja completa */
+}
+
+.tech-grid-horizontal {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, auto);
+  grid-auto-flow: column;
+  padding: 2rem;
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid #475569;
+  border-radius: 1rem;
+
+}
 /* Tarjetas de tecnología */
 .tech-card {
   position: relative;
-  background: rgba(30, 41, 59, 0.5);
-  backdrop-filter: blur(10px);
-  border-radius: 1rem;
-  padding: 2rem 1.5rem;
-  border: 1px solid #475569;
+  backdrop-filter: none; /* ← Quitar blur individual */
+  padding: 1rem; /* ← Menos padding */
   cursor: pointer;
   overflow: hidden;
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.5s ease;
+  border-radius: 0.5rem; /* ← Redondeo suave */
 }
 
 .tech-title {
-  color: #cbd5e1;
-  margin-bottom: 3rem;
+  font-size: 1.65rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1.9rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.5s ease;
+}
+
+.visible .tech-title {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .tech-card.visible {
@@ -366,7 +430,7 @@ onMounted(() => {
 }
 
 .tech-card:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-8px) scale(1);
   border-color: #64748b;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
@@ -393,8 +457,8 @@ onMounted(() => {
 }
 
 .tech-icon {
-  width: 5rem;
-  height: 5rem;
+  width: 3.5rem;
+  height: 3.5rem;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
@@ -404,10 +468,10 @@ onMounted(() => {
 }
 
 .tech-name {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 600;
   color: white;
-  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .tech-category {

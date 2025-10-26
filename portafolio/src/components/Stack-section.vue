@@ -39,18 +39,6 @@ window.removeEventListener('scroll', handleScroll)
 
 const techs = ref([
   {
-    name: 'Vue.js',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg',
-    category: 'Frontend',
-    color: '#42b883'
-  },
-  {
-    name: 'React',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
-    category: 'Frontend',
-    color: '#61dafb'
-  },
-  {
     name: 'Python',
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
     category: 'Backend',
@@ -66,7 +54,13 @@ const techs = ref([
     name: 'Java',
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg',
     category: 'Backend',
-    color: '#68a063'
+    color: '#f05032'
+  },
+  {
+    name: 'HTML',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg',
+    category: 'Frontend',
+    color: '#f05032'
   },
   {
     name: 'CSS3',
@@ -74,24 +68,29 @@ const techs = ref([
     category: 'Frontend',
     color: '#264de4'
   },
-    {
-    name: 'HTML',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg',
-    category: 'Frontend',
-    color: '#264de4'
-  },
   {
     name: 'JavaScript',
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',
     category: 'Frontend',
-    color: '#264de4'
+    color: '#dbe45d4d'
   },
-
+  {
+    name: 'Vue.js',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg',
+    category: 'Frontend',
+    color: '#42b883'
+  },
+  {
+    name: 'React',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
+    category: 'Frontend',
+    color: '#61dafb'
+  },
   {
     name: 'MySQL',
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg',
     category: 'Database',
-    color: '#13aa52'
+    color: '#2496ed'
   },
   {
     name: 'Git',
@@ -103,14 +102,20 @@ const techs = ref([
     name: 'GitHub',
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg',
     category: 'Tools',
-    color: '#f05032'
+    color: '#f0f8ff4d'
   },
   {
     name: 'Docker',
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg',
-    category: 'DevOps',
+    category: 'Tools',
     color: '#2496ed'
-  }
+  },
+  {
+    name: 'Vite',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg',
+    category: 'Tools',
+    color: '#ab4bfe'
+  },
 ])
 
 const visible = ref(false)
@@ -147,7 +152,7 @@ onMounted(() => {
       <!-- BACKEND -->
       <div class="tech-category">
         <h3 class="tech-title">Backend</h3>
-        <div class="tech-grid">
+        <div class="tech-grid tech-grid-small">
           <div
             v-for="(tech, index) in techs.filter(t => t.category === 'Backend')"
             :key="tech.name"
@@ -194,8 +199,8 @@ onMounted(() => {
 
       <!-- TOOLS -->
       <div class="tech-category">
-        <h3 class="tech-title">Tools</h3>
-        <div class="tech-grid">
+        <h3 class="tech-title">Herramienta</h3>
+        <div class="tech-grid tech-grid-horizontal">
           <div
             v-for="(tech, index) in techs.filter(t => t.category === 'Tools')"
             :key="tech.name"
@@ -223,10 +228,10 @@ onMounted(() => {
         </div>
       </div>
 
-      <!-- DATABASE (opcional, tienes MySQL) -->
-      <div class="tech-category" v-if="techs.filter(t => t.category === 'Database').length > 0">
-        <h3 class="tech-title">Database</h3>
-        <div class="tech-grid">
+      <!-- DATABASE -->
+      <div class="tech-category tech-category-database" v-if="techs.filter(t => t.category === 'Database').length > 0">
+        <h3 class="tech-title">Base de datos</h3>
+        <div class="tech-grid tech-grid-small">
           <div
             v-for="(tech, index) in techs.filter(t => t.category === 'Database')"
             :key="tech.name"
@@ -252,13 +257,11 @@ onMounted(() => {
 </template>
 
 <style scoped>
-
-
 /* === LÍNEAS DIVISORAS === */
 .linea-superior {
   width: 200px;
   height: 2px;
-  background-color: rgba(240, 248, 255, 0.3);
+  background-color: #fefff04d;
   border: none;
   margin: 17px auto 0 2rem;
   transition: width 0.3s ease;
@@ -330,16 +333,12 @@ onMounted(() => {
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1.4rem;
   position: relative;
   z-index: 10;
   text-align: center;
+  
 }
-
-.tech-category {
-  margin-bottom: 3rem; /* Espacio entre categorías */
-}
-
 /* Header */
 .header {
   text-align: center;
@@ -370,20 +369,18 @@ onMounted(() => {
 /* Grid de tecnologías */
 .tech-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* ← Más pequeño */
-  gap: 1rem; /* ← Más espacio interno */
-  padding: 1.5rem; /* ← Agregar padding interno */
-  background: rgba(30, 41, 59, 0.5); /* ← Fondo de la caja */
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(30, 41, 59, 0.5);
   border: 1px solid #475569;
-  border-radius: 1rem; /* ← Redondear todo el contenedor */
+  border-radius: 1rem; 
   margin-bottom: 0;
   transition: border-color 0.3s ease;
 }
-
 .tech-grid:hover {
-  border-color: #64748b; /* ← Efecto hover en la caja completa */
+  border-color: #64748b; 
 }
-
 .tech-grid-horizontal {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, auto);
@@ -393,19 +390,19 @@ onMounted(() => {
   backdrop-filter: blur(10px);
   border: 1px solid #475569;
   border-radius: 1rem;
-
 }
+
 /* Tarjetas de tecnología */
 .tech-card {
   position: relative;
-  backdrop-filter: none; /* ← Quitar blur individual */
-  padding: 1rem; /* ← Menos padding */
+  backdrop-filter: none; 
+  padding: 1rem;
   cursor: pointer;
   overflow: hidden;
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.5s ease;
-  border-radius: 0.5rem; /* ← Redondeo suave */
+  border-radius: 0.5rem; 
 }
 
 .tech-title {

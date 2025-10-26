@@ -1,10 +1,12 @@
 <script setup lang="ts">
 
+
+import { icon } from '@fortawesome/fontawesome-svg-core'
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const svgReady = ref(false)
 const lineWidth = ref(0)
-const aboutMeVisible = ref(false)
+const StackVisible = ref(false)
 
 // Función para manejar el scroll y animar la línea
 const handleScroll = () => {
@@ -18,10 +20,10 @@ const progress = Math.min(scrollPosition / maxScroll, 1)
 lineWidth.value = 200 + (680 * progress) // De 200px a 880px
 
 // Detectar si la sección "Sobre Mi" está visible
-const aboutMeSection = document.querySelector('.about-me-container')
-if (aboutMeSection) {
-    const rect = aboutMeSection.getBoundingClientRect()
-    aboutMeVisible.value = rect.top < windowHeight * 0.8
+const StackVisibleSection = document.querySelector('.tech-stack-section')
+if (StackVisibleSection) {
+    const rect = StackVisibleSection.getBoundingClientRect()
+    StackVisible.value = rect.top < windowHeight * 0.8
 }
 }
 
@@ -38,49 +40,74 @@ window.removeEventListener('scroll', handleScroll)
 const techs = ref([
   {
     name: 'Vue.js',
-    icon: '⚡',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg',
     category: 'Frontend',
     color: '#42b883'
   },
   {
     name: 'React',
-    icon: '⚛️',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
     category: 'Frontend',
     color: '#61dafb'
   },
   {
-    name: 'JavaScript',
-    icon: '📘',
-    category: 'Language',
-    color: '#3178c6'
+    name: 'Python',
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+    category: 'Backend',
+    color: '#68a063'
   },
   {
-    name: 'Python',
-    icon: '🟢',
+    name: 'Fast Api',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg',
+    category: 'Backend',
+    color: '#68a063'
+  },
+  {
+    name: 'Java',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg',
     category: 'Backend',
     color: '#68a063'
   },
   {
     name: 'CSS3',
-    icon: '🎨',
-    category: 'Styling',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg',
+    category: 'Frontend',
+    color: '#264de4'
+  },
+    {
+    name: 'HTML',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg',
+    category: 'Frontend',
     color: '#264de4'
   },
   {
+    name: 'JavaScript',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',
+    category: 'Frontend',
+    color: '#264de4'
+  },
+
+  {
     name: 'MySQL',
-    icon: '🍃',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg',
     category: 'Database',
     color: '#13aa52'
   },
   {
     name: 'Git',
-    icon: '📦',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg',
+    category: 'Tools',
+    color: '#f05032'
+  },
+  {
+    name: 'GitHub',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg',
     category: 'Tools',
     color: '#f05032'
   },
   {
     name: 'Docker',
-    icon: '🐳',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg',
     category: 'DevOps',
     color: '#2496ed'
   }
@@ -102,7 +129,7 @@ onMounted(() => {
     </div>
 
 
-  <section class="tech-stack-section" :class=" {'visible': aboutMeVisible}">
+  <section class="tech-stack-section" :class=" {'visible': StackVisible}">
     <!-- Efectos de fondo -->
     <div class="background-effects">
       <div class="blob blob-1"></div>
@@ -119,9 +146,11 @@ onMounted(() => {
       </div>
 
       <!-- Grid de tecnologías -->
+      <h2 class="tech-title">Backend</h2>
+
       <div class="tech-grid">
         <div
-          v-for="(tech, index) in techs"
+          v-for="(tech, index) in techs.filter(t => t.category === 'Backend')"
           :key="tech.name"
           class="tech-card"
           :class="{ visible }"
@@ -131,13 +160,59 @@ onMounted(() => {
           }"
         >
           <div class="card-glow"></div>
-          
           <div class="card-content">
-            <div class="tech-icon">{{ tech.icon }}</div>
+            <img class="tech-icon" :src="tech.icon" />
             <h3 class="tech-name">{{ tech.name }}</h3>
             <span class="tech-category">{{ tech.category }}</span>
           </div>
-
+          <div class="hover-indicator"></div>
+        </div>
+      </div>
+      <h2 class="tech-title">Frontend</h2>
+      <div class="tech-grid">
+        <div
+        v-for="(tech, index) in techs.filter(t => t.category == 'Frontend')"
+        :key="tech.name"
+        class="tech-card"
+        :class="{visible}"
+        :style="{
+          transitionDelay: `${index * 100}ms`,
+          '--tech-color': tech.color
+        }"
+        >
+        
+        <div class="card-glow"></div>
+        
+        <div class="card-content">
+          <img class="tech-icon" :src="tech.icon" />
+          <h3 class="tech-name">{{ tech.name }}</h3>
+          <span class="tech-category">{{ tech.category }}</span>
+        </div>
+        <div class="hover-indicator"></div>
+      </div>
+      </div>
+      <h2 class="tech-title">Tools</h2>
+        <div class="tech-grid">
+        <div
+          v-for="(tech, index) in techs.filter(t => t.category === 'Tools')"
+          :key="tech.name"
+          class="tech-card"
+          :class="{ visible }"
+          :style="{ 
+            transitionDelay: `${index * 100}ms`,
+            '--tech-color': tech.color,
+          }"
+        >
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <img class="tech-icon" :src="tech.icon" 
+              :style="{ 
+                  filter: tech.name === 'GitHub' ? 'invert(1) brightness(2)' : 'none' 
+              }"
+            />
+            <h3 class="tech-name">{{ tech.name }}</h3>
+            <span class="tech-category">{{ tech.category }}</span>
+          </div>
           <div class="hover-indicator"></div>
         </div>
       </div>
@@ -196,7 +271,7 @@ onMounted(() => {
 }
 
 .blob-1 {
-  top: 5rem;
+  top: 10rem;
   left: 2.5rem;
   width: 18rem;
   height: 18rem;
@@ -225,6 +300,7 @@ onMounted(() => {
   padding: 0 1.5rem;
   position: relative;
   z-index: 10;
+  text-align: center;
 }
 
 /* Header */
@@ -256,10 +332,12 @@ onMounted(() => {
 
 /* Grid de tecnologías */
 .tech-grid {
+  max-width: 1000px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
   margin-bottom: 4rem;
+  margin-left: 8rem;
 }
 
 /* Tarjetas de tecnología */
@@ -275,6 +353,11 @@ onMounted(() => {
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.5s ease;
+}
+
+.tech-title {
+  color: #cbd5e1;
+  margin-bottom: 3rem;
 }
 
 .tech-card.visible {
@@ -306,11 +389,13 @@ onMounted(() => {
 .card-content {
   position: relative;
   z-index: 10;
+  text-align: center;
 }
 
 .tech-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
   transition: transform 0.3s ease;
 }
 

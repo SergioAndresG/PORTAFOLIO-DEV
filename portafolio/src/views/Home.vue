@@ -2,6 +2,7 @@
 import Header from '../components/Header.vue'
 import AboutMe from '../components/About-me.vue'
 import StackSection from '../components/Stack-section.vue'
+import ProyectsSection from '../components/Proyects-section.vue'
 import { icon } from '@fortawesome/fontawesome-svg-core'
 import { fab, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
@@ -49,6 +50,7 @@ import { fab, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
   <AboutMe />
   <StackSection />
+  <ProyectsSection />
 
 
 </template>

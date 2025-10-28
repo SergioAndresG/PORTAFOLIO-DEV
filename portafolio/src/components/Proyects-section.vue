@@ -70,13 +70,23 @@ const proyects = ref([
   </div>
 
   <section class="tech-stack-section" :class="{'visible': StackVisible}"> 
-        <!-- Header principal -->
+      <!-- Header principal -->
       <div class="header" :class="{ visible }">
         <h2 class="title">Proyectos</h2>
         <p class="subtitle">
           Algunos proyectos en los que he trabajado
         </p>
       </div>
+
+      <div class="container">
+        <div class="proyect-grid">
+            <div v-for="proyect in proyects" class="proyect-card">
+                <h3 class="proyect-title">{{ proyect.title }}</h3>
+                <p class="proyect-description">{{ proyect.description }}</p>
+            </div>
+        </div>
+      </div>
+
 
   </section>
 
@@ -137,5 +147,39 @@ const proyects = ref([
   color: #cbd5e1;
   transition-delay: 150ms;
 }
+.proyect-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 0;
+  transition: border-color 0.3s ease;
+}
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.4rem;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+.proyect-card {
+    position: relative;
+    border: #475569 solid 2px;
+    border-radius: 1rem;
+}
+.proyect-title {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #44a2ff;
+  margin-top: 1.5rem;
+}
+.proyect-description{
+  font-size: 1rem;
+  color: #cbd5e1;
+  margin-top: 0.5rem;
+}
+
+
 
 </style>

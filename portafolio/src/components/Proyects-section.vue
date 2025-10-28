@@ -26,14 +26,41 @@ if (StackVisibleSection) {
 }
 
 onMounted(() => {
-svgReady.value = true
-window.addEventListener('scroll', handleScroll)
-handleScroll() // Llamar una vez al montar
+    svgReady.value = true
+    window.addEventListener('scroll', handleScroll)
+    handleScroll() // Llamar una vez al montar
+    setTimeout(() => {
+        visible.value = true
+    }, 100)
 })
 
 onUnmounted(() => {
 window.removeEventListener('scroll', handleScroll)
 })
+const visible = ref(false)
+
+
+const proyects = ref([
+    {
+        title: 'Automatización Web',
+        description: 'Bot de automatización de ingreso repetitivo de usuarios a la APE (Agencia Publica de Empleo), con interfaz de escritorio. Proceso que redujo el tiempo manual en un 80%.',
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+        technologies: ['Python', 'Selenium', 'PyInstaller'],
+        color: '#68a063',
+        category: 'Backend',
+        github: 'https://github.com/SergioAndresG/inscritos_sena_ape',
+
+    },
+        {
+        title: 'Gestor de Formatos F-165',
+        description: 'Bot de automatización de ingreso repetitivo de usuarios a la APE (Agencia Publica de Empleo), con interfaz de escritorio. Proceso que redujo el tiempo manual en un 80%.',
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+        technologies: ['Python', 'Vue.js', 'MySQL'],
+        color: '#68a063',
+        category: 'Full Stack',
+        github: 'https://github.com/SergioAndresG/inscritos_sena_ape',
+    },
+]);
 </script>
 
 <template>
@@ -41,6 +68,18 @@ window.removeEventListener('scroll', handleScroll)
   <div class="linea-container">
     <hr class="linea-scroll" :style="{ width: lineWidth + 'px' }">
   </div>
+
+  <section class="tech-stack-section" :class="{'visible': StackVisible}"> 
+        <!-- Header principal -->
+      <div class="header" :class="{ visible }">
+        <h2 class="title">Proyectos</h2>
+        <p class="subtitle">
+          Algunos proyectos en los que he trabajado
+        </p>
+      </div>
+
+  </section>
+
 </template>
 
 <style scoped>
@@ -71,4 +110,32 @@ window.removeEventListener('scroll', handleScroll)
   transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   max-width: 880px;
 }
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(-40px);
+  transition: all 0.7s ease;
+}
+
+.header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #cbd5e1;
+  transition-delay: 150ms;
+}
+
 </style>

@@ -199,7 +199,7 @@ onMounted(() => {
 
       <!-- TOOLS -->
       <div class="tech-category">
-        <h3 class="tech-title">Herramienta</h3>
+        <h3 class="tech-title">Herramientas</h3>
         <div class="tech-grid tech-grid-horizontal">
           <div
             v-for="(tech, index) in techs.filter(t => t.category === 'Tools')"

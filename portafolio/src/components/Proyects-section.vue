@@ -40,11 +40,11 @@ window.removeEventListener('scroll', handleScroll)
 const visible = ref(false)
 
 
-const proyects = ref([
+const projects = ref([
     {
         title: 'Automatización Web',
         description: 'Bot de automatización de ingreso repetitivo de usuarios a la APE (Agencia Publica de Empleo), con interfaz de escritorio. Proceso que redujo el tiempo manual en un 80%.',
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+        icon: "",
         technologies: ['Python', 'Selenium', 'PyInstaller'],
         color: '#68a063',
         category: 'Backend',
@@ -54,7 +54,7 @@ const proyects = ref([
         {
         title: 'Gestor de Formatos F-165',
         description: 'Bot de automatización de ingreso repetitivo de usuarios a la APE (Agencia Publica de Empleo), con interfaz de escritorio. Proceso que redujo el tiempo manual en un 80%.',
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+        icon: "https://i.postimg.cc/26mgHG97/Captura-de-pantalla-2025-10-29-111936.png' border='0' alt='Captura-de-pantalla-2025-10-29-111936",
         technologies: ['Python', 'Vue.js', 'MySQL'],
         color: '#68a063',
         category: 'Full Stack',
@@ -79,10 +79,13 @@ const proyects = ref([
       </div>
 
       <div class="container">
-        <div class="proyect-grid">
-            <div v-for="proyect in proyects" class="proyect-card">
-                <h3 class="proyect-title">{{ proyect.title }}</h3>
-                <p class="proyect-description">{{ proyect.description }}</p>
+        <div class="project-grid">
+            <div v-for="project in projects" class="project-card">
+                <h3 class="project-title">{{ project.title }}</h3>
+                  <div class="project-icon">
+                    <img :src="project.icon" :alt="project.title" />
+                  </div>
+                <p class="project-description">{{ project.description }}</p>
             </div>
         </div>
       </div>
@@ -147,7 +150,7 @@ const proyects = ref([
   color: #cbd5e1;
   transition-delay: 150ms;
 }
-.proyect-grid {
+.project-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); 
   gap: 1rem;
@@ -163,23 +166,82 @@ const proyects = ref([
   z-index: 10;
   text-align: center;
 }
-.proyect-card {
-    position: relative;
-    border: #475569 solid 2px;
-    border-radius: 1rem;
+.project-icon {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 1rem 1rem 1rem 1rem;
+  margin-bottom: 1rem;
 }
-.proyect-title {
+.project-icon img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: scale(1);
+  filter: brightness(0.9);
+}
+.project-card:hover .project-icon img {
+  transform: scale(1.12) translateY(-5px);
+  filter: brightness(1.05);
+}
+/* Brillo diagonal animado */
+.project-icon::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transform: skewX(-25deg);
+  transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.project-card:hover .project-icon::after {
+  left: 150%; /* ← El brillo cruza de izquierda a derecha */
+}
+
+/* Opcional: Borde brillante */
+.project-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  border-radius: 1rem 1rem 0 0;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6) border-box;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) padding-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-icon::before {
+  opacity: 1;
+}
+.project-card {
+  position: relative;
+  border: #475569 solid 2px;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.project-title {
   font-size: 1.7rem;
   font-weight: 600;
   color: #44a2ff;
   margin-top: 1.5rem;
 }
-.proyect-description{
+.project-description{
   font-size: 1rem;
   color: #cbd5e1;
   margin-top: 0.5rem;
 }
-
-
-
 </style>

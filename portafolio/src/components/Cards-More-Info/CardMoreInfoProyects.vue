@@ -38,26 +38,28 @@ const cerrarModal = () => {
 </script>
 
 <template>
-    <div v-if="show" @click="cerrarModal" class="modal-overlay">
-        <div class="modal-content" @click.stop>
-            <button class="modal-close" @click="cerrarModal">X</button>
-            
-            <!-- Componente dinámico -->
-            <component 
-                :is="dynamicComponent" 
-                :project="project"
-                v-if="dynamicComponent && project"
-            />
-            
-            <!-- Mensaje de error si no encuentra el componente -->
-            <div v-else style="padding: 20px; text-align: center;">
-                <p style="color: red; font-weight: bold;">
-                    ⚠️ No se encontró el componente para el proyecto ID: {{ project?.id }}
-                </p>
-                <p>Componentes disponibles: 1 (APE), 2 (F-165)</p>
+    <Transition name="modal">
+        <div v-if="show" @click="cerrarModal" class="modal-overlay">
+            <div class="modal-content" @click.stop>
+                <button class="modal-close" @click="cerrarModal">X</button>
+                
+                <!-- Componente dinámico -->
+                <component 
+                    :is="dynamicComponent" 
+                    :project="project"
+                    v-if="dynamicComponent && project"
+                />
+                
+                <!-- Mensaje de error si no encuentra el componente -->
+                <div v-else style="padding: 20px; text-align: center;">
+                    <p style="color: red; font-weight: bold;">
+                        No se encontró el componente para el proyecto ID: {{ project?.id }}
+                    </p>
+                    <p>Componentes disponibles: 1 (APE), 2 (F-165)</p>
+                </div>
             </div>
         </div>
-    </div>
+    </Transition>
 </template>
 
 <style scoped>
@@ -72,7 +74,6 @@ const cerrarModal = () => {
     z-index: 99;
     animation: fadeIn 0.3s ease;
 }
-
 .modal-content {
     position: relative;
     background-color: #1a1a1a;
@@ -87,8 +88,6 @@ const cerrarModal = () => {
     animation: slideUp 0.3s ease;
     overflow-y: auto;
 }
-
-/* CIERRE */
 .modal-close {
     position: absolute;
     top: 1rem;
@@ -102,16 +101,16 @@ const cerrarModal = () => {
 }
 
 .modal-close:hover {
-    color: #f87171; /* Rojo suave en hover */
+    color: #f87171; 
     transform: rotate(180deg);
 }
 .modal-content::-webkit-scrollbar {
-    width: 5px; /* Hazla más estrecha */
+    width: 5px;
 }
 
 .modal-content::-webkit-scrollbar-track {
     background: #1a1a1a;
-    border-radius: 3rem; /* Ajustar el radio para que coincida con el modal */
+    border-radius: 3rem; 
 }
 
 .modal-content::-webkit-scrollbar-thumb {
@@ -120,4 +119,49 @@ const cerrarModal = () => {
     border: 2px solid #1a1a1a;
 }
 
+.modal-enter-active{
+    animation: fadeIn 0.3s ease;
+}
+.modal-enter-active .modal-content{
+    animation: slideUp 0.3s ease;
+}
+
+.modal-leave-active{
+    animation: fadeOut 0.3s ease;
+}
+.modal-leave-active .modal-content{
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes slideUp{
+    from {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut{
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+@keyframes slideDown{
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+}
 </style>

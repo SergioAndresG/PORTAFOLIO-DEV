@@ -46,7 +46,7 @@ const visible = ref(false)
 const projects = ref([
     {
         title: 'Automatización Web',
-        description: 'Bot de automatización de ingreso repetitivo de usuarios a la APE (Agencia Publica de Empleo), con interfaz de escritorio. Proceso que redujo el tiempo manual en un 80%.',
+        description: 'Bot de automatización de ingreso repetitivo de usuarios a la APE (Agencia Publica de Empleo), con interfaz de escritorio.',
         icon: "https://i.postimg.cc/8Cv9fJXG/atomatizacion.png",
         technologies: ['Python', 'Selenium', 'PyInstaller'],
         color: '#68a063',

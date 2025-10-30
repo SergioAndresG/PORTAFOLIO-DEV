@@ -16,14 +16,12 @@ const activeProject = ref(null);
 const openModal = (project) => {
     activeProject.value = project;
     isModalOpen.value = true;
-    console.log('Modal abierto con proyecto:', project); // Debug
 };
 
 // Función para cerrar el modal
 const closeModal = () => {
     isModalOpen.value = false;
     activeProject.value = null;
-    console.log('Modal cerrado'); // Debug
 };
 
 // Función para manejar el scroll y animar la línea
@@ -110,7 +108,6 @@ const projects = ref([
         </div>
     </section>
 
-    <!-- MODAL FUERA DEL V-FOR - Solo una instancia -->
     <CardMoreInfoProyects 
         :show="isModalOpen" 
         :project="activeProject" 

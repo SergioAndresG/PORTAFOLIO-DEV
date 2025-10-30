@@ -58,7 +58,7 @@ const visible = ref(false)
 const projects = ref([
     {
         id: 1,
-        title: 'Automatización Web',
+        title: 'Automatización Masiva de Inscripciones',
         description: 'Bot de automatización de ingreso repetitivo de usuarios a la APE (Agencia Publica de Empleo), con interfaz de escritorio.',
         icon: "https://i.postimg.cc/8Cv9fJXG/atomatizacion.png",
         technologies: ['Python', 'Selenium', 'PyInstaller'],
@@ -102,7 +102,10 @@ const projects = ref([
                         <img :src="project.icon" :alt="project.title" />
                     </div>
                     <p class="project-description">{{ project.description }}</p>
-                    <button class="buttom-modal" @click="openModal(project)">Más información</button>
+                    <div class="card-overlay">
+                      <button class="buttom-modal" @click="openModal(project)">Más información</button>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -223,9 +226,6 @@ const projects = ref([
   transform: skewX(-25deg);
   transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.project-card:hover .project-icon::after {
-  left: 150%; /* ← El brillo cruza de izquierda a derecha */
-}
 
 /* Opcional: Borde brillante */
 .project-icon::before {
@@ -234,7 +234,7 @@ const projects = ref([
   inset: 0;
   border: 2px solid transparent;
   border-radius: 1rem 1rem 0 0;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6) border-box;
+  background: linear-gradient(135deg, #3b82f6, #7d4af5) border-box;
   -webkit-mask: 
     linear-gradient(#fff 0 0) padding-box, 
     linear-gradient(#fff 0 0);
@@ -243,15 +243,26 @@ const projects = ref([
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-
 .project-card:hover .project-icon::before {
   opacity: 1;
 }
 .project-card {
   position: relative;
+  overflow: hidden;
   border: #475569 solid 2px;
   border-radius: 1rem;
   padding: 1rem;
+  transition: transform 0.3s ease-in-out;
+}
+.project-card:hover {
+  transform: translateY(-5px);
+}
+.project-card:hover .card-overlay {
+    opacity: 1;
+  pointer-events: auto;
+}
+.project-card:hover .project-icon::after {
+  left: 150%; /* ← El brillo cruza de izquierda a derecha */
 }
 .project-title {
   font-size: 1.7rem;
@@ -265,19 +276,85 @@ const projects = ref([
   margin-top: 0.5rem;
   margin-bottom: 2rem;
 }
+.card-overlay {
+  inset: 0;
+  background-color: rgba(0,0,0,0.85);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
 .buttom-modal{
-  margin: 1rem;
-  padding: 0.7rem;
-  border-radius: 1rem;
-  background-color: #475569;
   font-weight: bold;
-  color: #fff;
   border: none;
-  transition: all 0.3s ease-in-out;
+  position: relative;
+  width: 150px;
+  height: 50px;
+  border-radius: 45px;
+  border: none;
+  background-color: #3b82f6;
+  color: white;
+  box-shadow: 0px 10px 10px rgb(215, 193, 255) inset,
+  0px 5px 10px rgba(5, 5, 5, 0.212),
+  0px -10px 10px rgb(58, 124, 255) inset;
+  cursor: pointer;
+  transform: translateY(20px);
+  transition: all 0.3s ease 0.1s;
+}
+.project-card:hover .buttom-modal{
+  transform: translateY(0);
 }
 .buttom-modal:hover{
-  background-color: #5a6778;
-  
-  transform: translateY(-5px);
+  background-color: #4892f3;
+  animation: jello-horizontal 0.9s both;
 }
+.buttom-modal::before {
+  width: 70%;
+  height: 2px;
+  position: absolute;
+  background-color: rgba(250, 250, 250, 0.678);
+  content: "";
+  filter: blur(1px);
+  top: 7px;
+  border-radius: 50%;
+}
+.buttom-modal::after {
+  width: 70%;
+  height: 2px;
+  position: absolute;
+  content: "";
+  filter: blur(1px);
+  bottom: 7px;
+  border-radius: 50%;
+}
+
+@keyframes jello-horizontal {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
 </style>

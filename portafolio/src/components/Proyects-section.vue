@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { icon } from '@fortawesome/fontawesome-svg-core'
 import { ref, onMounted, onUnmounted } from 'vue'
+import CardMoreInfoProyects from './Card-More-Info-Proyects.vue'
 
 const svgReady = ref(false)
 const lineWidth = ref(0)
 const StackVisible = ref(false)
+
+const modalAbierto = ref(false)
 
 // Función para manejar el scroll y animar la línea
 const handleScroll = () => {
@@ -53,7 +56,7 @@ const projects = ref([
     },
         {
         title: 'Gestor de Formatos F-165',
-        description: 'Bot de automatización de ingreso repetitivo de usuarios a la APE (Agencia Publica de Empleo), con interfaz de escritorio. Proceso que redujo el tiempo manual en un 80%.',
+        description:  'Aplicativo web encargado de generar y gestionar reportes f-165 (Etapa Productiva).',
         icon: "https://i.postimg.cc/26mgHG97/Captura-de-pantalla-2025-10-29-111936.png' border='0' alt='Captura-de-pantalla-2025-10-29-111936",
         technologies: ['Python', 'Vue.js', 'MySQL'],
         color: '#68a063',
@@ -86,6 +89,10 @@ const projects = ref([
                     <img :src="project.icon" :alt="project.title" />
                   </div>
                 <p class="project-description">{{ project.description }}</p>
+                <button @click="modalAbierto = true">Mas información</button>
+
+                <CardMoreInfoProyects v-model="modalAbierto"/>
+
             </div>
         </div>
       </div>

@@ -40,8 +40,8 @@ const cerrarModal = () => {
                 <h3>🔒 Seguridad y Arquitectura Destacadas</h3>
                 <ul class="detail-list">
                     <li>Implementación de **Autenticación JWT** (JSON Web Tokens) con sesiones basadas en Cookies.</li>
-                    <li>Desarrollo de un **Middleware customizado** para la **prevención activa de ataques XSS** e **Inyección SQL**.</li>
-                    <li>Gestión de Roles y Permisos (Instructor y Administrador) a nivel de *backend*.</li>
+                    <li>Desarrollo de un Middleware customizado para la prevención activa de ataques XSS e Inyección SQL.</li>
+                    <li>Gestión de Roles y Permisos (Instructor y Administrador) a nivel de*backend.</li>
                 </ul>
             </div>
 
@@ -49,7 +49,7 @@ const cerrarModal = () => {
                 <h3>✨ Funcionalidades Clave</h3>
                 <ul class="detail-list">
                     <li><span class="resaltado">Firmas Digitales:</span> Permite la firma en tiempo real, integrando las firmas a los formatos descargables automáticamente.</li>
-                    <li><span class="resaltado">Ciclo de Vida del Dato:</span> Automatización de la **eliminación periódica de fichas y reportes** obsoletos, manteniendo la base de datos limpia.</li>
+                    <li><span class="resaltado">Ciclo de Vida del Dato:</span> Automatización de la eliminación periódica de fichas y reportes obsoletos, manteniendo la base de datos limpia.</li>
                 </ul>
             </div>
             
@@ -78,8 +78,8 @@ const cerrarModal = () => {
     margin-top: 6rem;
     padding: 2rem; 
     max-width: 700px;
-    max-height: 75vh; 
-    border-radius: 1.25rem; 
+    max-height: 72vh; 
+    border-radius:  1rem  0.5rem  0.5rem 1rem; 
     border: 1px solid #334155; 
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
     animation: slideUp 0.3s ease;
@@ -101,10 +101,23 @@ const cerrarModal = () => {
 
 .modal-close:hover {
     color: #f87171; /* Rojo suave en hover */
-    transform: rotate(90deg);
+    transform: rotate(180deg);
+}
+.modal-content::-webkit-scrollbar {
+    width: 5px; /* Hazla más estrecha */
 }
 
-/* ESTILOS DE TEXTO MEJORADOS */
+.modal-content::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 3rem; /* Ajustar el radio para que coincida con el modal */
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background-color: #475569;
+    border-radius: 20px; 
+    border: 2px solid #1a1a1a;
+}
+
 .modal-content h2 {
     color: #60a5fa; /* Color azul brillante */
     font-size: 2rem;

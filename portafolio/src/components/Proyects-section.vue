@@ -1,50 +1,65 @@
 <script setup lang="ts">
-import { icon } from '@fortawesome/fontawesome-svg-core'
 import { ref, onMounted, onUnmounted } from 'vue'
-import CardMoreInfoProyects from './Card-More-Info-Proyects.vue'
+import CardMoreInfoProyects from './Cards-More-Info/CardMoreInfoProyects.vue'
 
 const svgReady = ref(false)
 const lineWidth = ref(0)
 const StackVisible = ref(false)
 
-const modalAbierto = ref(false)
+// Variable para controlar si el modal está visible o no
+const isModalOpen = ref(false); 
+
+// Variable para almacenar el objeto completo del proyecto seleccionado
+const activeProject = ref(null); 
+
+// Función para abrir el modal
+const openModal = (project) => {
+    activeProject.value = project;
+    isModalOpen.value = true;
+    console.log('Modal abierto con proyecto:', project); // Debug
+};
+
+// Función para cerrar el modal
+const closeModal = () => {
+    isModalOpen.value = false;
+    activeProject.value = null;
+    console.log('Modal cerrado'); // Debug
+};
 
 // Función para manejar el scroll y animar la línea
 const handleScroll = () => {
-const scrollPosition = window.scrollY
-const windowHeight = window.innerHeight
+    const scrollPosition = window.scrollY
+    const windowHeight = window.innerHeight
 
-// Calcular el ancho de la línea basado en el scroll
-// La línea crece de 200px a 880px (55rem = 880px)
-const maxScroll = windowHeight * 0.5 // Crece hasta la mitad de la primera pantalla
-const progress = Math.min(scrollPosition / maxScroll, 1)
-lineWidth.value = 200 + (680 * progress) // De 200px a 880px
+    const maxScroll = windowHeight * 0.5
+    const progress = Math.min(scrollPosition / maxScroll, 1)
+    lineWidth.value = 200 + (680 * progress)
 
-// Detectar si la sección "Sobre Mi" está visible
-const StackVisibleSection = document.querySelector('.tech-stack-section')
-if (StackVisibleSection) {
-    const rect = StackVisibleSection.getBoundingClientRect()
-    StackVisible.value = rect.top < windowHeight * 0.8
-}
+    const StackVisibleSection = document.querySelector('.tech-stack-section')
+    if (StackVisibleSection) {
+        const rect = StackVisibleSection.getBoundingClientRect()
+        StackVisible.value = rect.top < windowHeight * 0.8
+    }
 }
 
 onMounted(() => {
     svgReady.value = true
     window.addEventListener('scroll', handleScroll)
-    handleScroll() // Llamar una vez al montar
+    handleScroll()
     setTimeout(() => {
         visible.value = true
     }, 100)
 })
 
 onUnmounted(() => {
-window.removeEventListener('scroll', handleScroll)
+    window.removeEventListener('scroll', handleScroll)
 })
-const visible = ref(false)
 
+const visible = ref(false)
 
 const projects = ref([
     {
+        id: 1,
         title: 'Automatización Web',
         description: 'Bot de automatización de ingreso repetitivo de usuarios a la APE (Agencia Publica de Empleo), con interfaz de escritorio.',
         icon: "https://i.postimg.cc/8Cv9fJXG/atomatizacion.png",
@@ -52,54 +67,55 @@ const projects = ref([
         color: '#68a063',
         category: 'Backend',
         github: 'https://github.com/SergioAndresG/inscritos_sena_ape',
-
     },
-        {
+    {
+        id: 2,
         title: 'Gestor de Formatos F-165',
-        description:  'Aplicativo web encargado de generar y gestionar reportes f-165 (Etapa Productiva).',
-        icon: "https://i.postimg.cc/26mgHG97/Captura-de-pantalla-2025-10-29-111936.png' border='0' alt='Captura-de-pantalla-2025-10-29-111936",
+        description: 'Aplicativo web encargado de generar y gestionar reportes f-165 (Etapa Productiva).',
+        icon: "https://i.postimg.cc/26mgHG97/Captura-de-pantalla-2025-10-29-111936.png",
         technologies: ['Python', 'Vue.js', 'MySQL'],
         color: '#68a063',
         category: 'Full Stack',
-        github: 'https://github.com/SergioAndresG/inscritos_sena_ape',
+        github: 'https://github.com/SergioAndresG/gestor-f165',
     },
 ]);
 </script>
 
 <template>
-      <!-- Línea animada con scroll -->
-  <div class="linea-container">
-    <hr class="linea-scroll" :style="{ width: lineWidth + 'px' }">
-  </div>
+    <!-- Línea animada con scroll -->
+    <div class="linea-container">
+        <hr class="linea-scroll" :style="{ width: lineWidth + 'px' }">
+    </div>
 
-  <section class="tech-stack-section" :class="{'visible': StackVisible}"> 
-      <!-- Header principal -->
-      <div class="header" :class="{ visible }">
-        <h2 class="title">Proyectos</h2>
-        <p class="subtitle">
-          Algunos proyectos en los que he trabajado
-        </p>
-      </div>
+    <section class="tech-stack-section" :class="{'visible': StackVisible}"> 
+        <!-- Header principal -->
+        <div class="header" :class="{ visible }">
+            <h2 class="title">Proyectos</h2>
+            <p class="subtitle">
+                Algunos proyectos en los que he trabajado
+            </p>
+        </div>
 
-      <div class="container">
-        <div class="project-grid">
-            <div v-for="project in projects" class="project-card">
-                <h3 class="project-title">{{ project.title }}</h3>
-                  <div class="project-icon">
-                    <img :src="project.icon" :alt="project.title" />
-                  </div>
-                <p class="project-description">{{ project.description }}</p>
-                <button class="buttom-modal" @click="modalAbierto = true">Mas información</button>
-
-                <CardMoreInfoProyects v-model="modalAbierto"/>
-
+        <div class="container">
+            <div class="project-grid">
+                <div v-for="project in projects" :key="project.id" class="project-card">
+                    <h3 class="project-title">{{ project.title }}</h3>
+                    <div class="project-icon">
+                        <img :src="project.icon" :alt="project.title" />
+                    </div>
+                    <p class="project-description">{{ project.description }}</p>
+                    <button class="buttom-modal" @click="openModal(project)">Más información</button>
+                </div>
             </div>
         </div>
-      </div>
+    </section>
 
-
-  </section>
-
+    <!-- MODAL FUERA DEL V-FOR - Solo una instancia -->
+    <CardMoreInfoProyects 
+        :show="isModalOpen" 
+        :project="activeProject" 
+        @close="closeModal"
+    />
 </template>
 
 <style scoped>

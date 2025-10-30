@@ -19,7 +19,7 @@ const props = defineProps<{
 <template>
     <div class="project-detail-content">
 
-            <h2>Automatización Web</h2>
+            <h2>Automatización Masiva de Inscripciones</h2>
 
             <div class="section">
                 <h3>Contexto y Impacto</h3>
@@ -35,8 +35,8 @@ const props = defineProps<{
             <div class="section">
                 <h3>🛠️ Stack Tecnológico (La Clave)</h3>
                 <ul class="tech-list">
-                    <li><span class="resaltado">Python</span> Pandas para la ingestión y procesamiento de datos del archivo Excel..</li>
-                    <li><span class="resaltado">Selenium</span> Para la navegación y manipulación de la interfaz web,.</li>
+                    <li><span class="resaltado">Python</span> Pandas para la ingestión y procesamiento de datos del archivo Excel.</li>
+                    <li><span class="resaltado">Selenium</span> Para la navegación y manipulación de la interfaz web.</li>
                 </ul>
             </div>
 

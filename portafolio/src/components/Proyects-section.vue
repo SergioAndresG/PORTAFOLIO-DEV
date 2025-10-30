@@ -89,7 +89,7 @@ const projects = ref([
                     <img :src="project.icon" :alt="project.title" />
                   </div>
                 <p class="project-description">{{ project.description }}</p>
-                <button @click="modalAbierto = true">Mas información</button>
+                <button class="buttom-modal" @click="modalAbierto = true">Mas información</button>
 
                 <CardMoreInfoProyects v-model="modalAbierto"/>
 
@@ -250,5 +250,21 @@ const projects = ref([
   font-size: 1rem;
   color: #cbd5e1;
   margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+.buttom-modal{
+  margin: 1rem;
+  padding: 0.7rem;
+  border-radius: 1rem;
+  background-color: #475569;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+.buttom-modal:hover{
+  background-color: #5a6778;
+  
+  transform: translateY(-5px);
 }
 </style>

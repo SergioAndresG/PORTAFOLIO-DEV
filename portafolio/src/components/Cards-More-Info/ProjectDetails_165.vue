@@ -120,20 +120,4 @@ const props = defineProps<{
     font-weight: bold;
     color: #a78bfa; /* Morado sutil para títulos dentro de p/li */
 }
-
-/* ANIMACIONES (Mantenidas) */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 </style>

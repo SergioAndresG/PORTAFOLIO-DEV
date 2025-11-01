@@ -53,6 +53,9 @@ const props = defineProps<{
                     <li>Implementación de un sistema de semáforo de estado en el archivo Excel: 🚦 Marca la fila en Azul mientras procesa, en Verde si la inscripción es exitosa, en Amarillo si el candidato ya existía (omitido) y en Rojo si se produce un error de registro.</li>
                 </ul>
             </div>
+            <div v-if="project" class="section">
+                <h3>🔗 Enlaces</h3>
+            </div>
             
             </div>
 </template>

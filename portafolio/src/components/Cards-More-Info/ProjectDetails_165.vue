@@ -56,12 +56,8 @@ const props = defineProps<{
             </ul>
         </div>
 
-        <!-- Opcional: Usar datos de la prop si los necesitas -->
         <div v-if="project" class="section">
             <h3>🔗 Enlaces</h3>
-            <a :href="project.github" target="_blank" class="github-link">
-                Ver código en GitHub →
-            </a>
         </div>
     </div>
 </template>

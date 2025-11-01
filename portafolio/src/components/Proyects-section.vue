@@ -55,13 +55,27 @@ onUnmounted(() => {
 
 const visible = ref(false)
 
+const projectsIcons = ref({
+    iconPython: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+    iconFatApi: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg',
+    iconJavaScript: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',
+    iconVueJs: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg',
+    iconReact: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
+    iconMySQL: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg',
+    iconGit: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg',
+    iconGithub: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg',
+    iconDocker: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg',
+    iconVite: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg',
+    iconSelenium: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/selenium/selenium-original.svg'
+});
+
 const projects = ref([
     {
         id: 1,
         title: 'Automatización Masiva de Inscripciones',
         description: 'Bot de automatización de ingreso repetitivo de usuarios a la APE (Agencia Publica de Empleo), con interfaz de escritorio.',
         icon: "https://i.postimg.cc/8Cv9fJXG/atomatizacion.png",
-        technologies: ['Python', 'Selenium', 'PyInstaller'],
+        techs: ['iconPython', 'iconSelenium'],
         color: '#68a063',
         category: 'Backend',
         github: 'https://github.com/SergioAndresG/inscritos_sena_ape',
@@ -71,7 +85,7 @@ const projects = ref([
         title: 'Gestor de Formatos F-165',
         description: 'Aplicativo web encargado de generar y gestionar reportes f-165 (Etapa Productiva).',
         icon: "https://i.postimg.cc/26mgHG97/Captura-de-pantalla-2025-10-29-111936.png",
-        technologies: ['Python', 'Vue.js', 'MySQL'],
+        techs: ['iconPython', 'iconVueJs', 'iconMySQL'],
         color: '#68a063',
         category: 'Full Stack',
         github: 'https://github.com/SergioAndresG/gestor-f165',
@@ -81,7 +95,7 @@ const projects = ref([
       title: 'CoffeBike - Sistema POS para Cafetería',
       description: 'Aplicación full-stack para gestión de inventario, pedidos de los clientes y ventas',
       icon: 'https://i.postimg.cc/zvjWwxsB/Captura-de-pantalla-2025-10-30-171308.png',
-      technologies: ['Python', 'FastApi', 'Vue.js', 'MySQL'],
+      techs: ['iconPython', 'iconFatApi', 'iconVueJs', 'iconMySQL'],
       color: '#68a063',
       category: 'Full Stack',
       github: 'primeroorganizo el readme.com'
@@ -112,6 +126,16 @@ const projects = ref([
                         <img :src="project.icon" :alt="project.title" />
                     </div>
                     <p class="project-description">{{ project.description }}</p>
+                    <div class="container-techs">
+                        <img
+                          v-for="tech in project.techs"
+                          :key="tech"
+                          :src="projectsIcons[tech]"
+                          :alt="tech"
+                          :title="tech.replace('icon', '')"
+                          class="tech-icon">
+                    </div>
+                      
                     <div class="card-overlay">
                       <button class="buttom-modal" @click="openModal(project)">Más información</button>
                     </div>
@@ -285,6 +309,19 @@ const projects = ref([
   color: #cbd5e1;
   margin-top: 0.5rem;
   margin-bottom: 2rem;
+  border-bottom: solid #475569 1px;
+  padding-bottom: 1.5rem;
+}
+.container-techs{
+  width: 300px;
+  display: flex;
+  justify-content:left;
+  margin-bottom: 1rem;
+}
+.tech-icon {
+  width: 2rem;
+  height: 2rem;
+  margin: 0.5rem;
 }
 .card-overlay {
   inset: 0;

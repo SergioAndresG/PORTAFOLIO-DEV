@@ -210,7 +210,7 @@ const projects = ref([
 .project-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); 
-  gap: 1rem;
+  gap: 2rem;
   padding: 1.5rem;
   margin-bottom: 0;
   transition: border-color 0.3s ease;
@@ -226,10 +226,11 @@ const projects = ref([
 .project-icon {
   position: relative;
   width: 100%;
-  height: 250px;
+  height: 280px;
   overflow: hidden;
-  border-radius: 1rem 1rem 1rem 1rem;
-  margin-bottom: 1rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
 }
 .project-icon img{
   width: 100%;
@@ -237,11 +238,11 @@ const projects = ref([
   object-fit: cover;
   transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transform: scale(1);
-  filter: brightness(0.9);
+  filter: brightness(0.85) contrast(1.05);
 }
 .project-card:hover .project-icon img {
-  transform: scale(1.12) translateY(-5px);
-  filter: brightness(1.05);
+  transform: scale(1.1) ;
+  filter: brightness(1.05) contrast(1.1);
 }
 /* Brillo diagonal animado */
 .project-icon::after {
@@ -284,12 +285,13 @@ const projects = ref([
   position: relative;
   overflow: hidden;
   border: #475569 solid 2px;
+  background: rgba(30, 41, 59, 0.5);
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1.5rem;
   transition: transform 0.3s ease-in-out;
 }
 .project-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
 }
 .project-card:hover .card-overlay {
     opacity: 1;
@@ -299,11 +301,15 @@ const projects = ref([
   left: 150%; /* ← El brillo cruza de izquierda a derecha */
 }
 .project-title {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: #44a2ff;
   margin-top: 1.5rem;
 }
+.project-card:hover .project-title {
+  color: #60b5ff;             
+}
+
 .project-description{
   font-size: 1rem;
   color: #cbd5e1;
@@ -311,6 +317,7 @@ const projects = ref([
   margin-bottom: 2rem;
   border-bottom: solid #475569 1px;
   padding-bottom: 1.5rem;
+  min-height: 3.5rem;
 }
 .container-techs{
   width: 300px;
@@ -325,9 +332,9 @@ const projects = ref([
 }
 .card-overlay {
   inset: 0;
-  background-color: rgba(0,0,0,0.85);
   opacity: 0;
   transition: opacity 0.3s ease;
+  pointer-events: none;
   pointer-events: none;
 }
 .buttom-modal{
@@ -344,7 +351,7 @@ const projects = ref([
   0px 5px 10px rgba(5, 5, 5, 0.212),
   0px -10px 10px rgb(58, 124, 255) inset;
   cursor: pointer;
-  transform: translateY(20px);
+  transform: translateY(10px);
   transition: all 0.3s ease 0.1s;
 }
 .project-card:hover .buttom-modal{
@@ -401,6 +408,32 @@ const projects = ref([
 
   100% {
     transform: scale3d(1, 1, 1);
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .project-grid {
+    grid-template-columns: 1fr; /* ← 1 columna en tablet */
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-icon {
+    height: 200px;              /* ← Imagen más pequeña en móvil */
+  }
+  
+  .project-title {
+    font-size: 1.25rem;
+  }
+  
+  .container-techs {
+    justify-content: center;    /* ← Centrar en móvil */
   }
 }
 

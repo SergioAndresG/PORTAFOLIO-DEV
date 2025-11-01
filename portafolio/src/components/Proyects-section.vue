@@ -76,6 +76,16 @@ const projects = ref([
         category: 'Full Stack',
         github: 'https://github.com/SergioAndresG/gestor-f165',
     },
+    {
+      id: 3,
+      title: 'CoffeBike - Sistema POS para Cafetería',
+      description: 'Aplicación full-stack para gestión de inventario, pedidos de los clientes y ventas',
+      icon: 'https://i.postimg.cc/zvjWwxsB/Captura-de-pantalla-2025-10-30-171308.png',
+      technologies: ['Python', 'FastApi', 'Vue.js', 'MySQL'],
+      color: '#68a063',
+      category: 'Full Stack',
+      github: 'primeroorganizo el readme.com'
+    }
 ]);
 </script>
 
@@ -234,7 +244,7 @@ const projects = ref([
   inset: 0;
   border: 2px solid transparent;
   border-radius: 1rem 1rem 0 0;
-  background: linear-gradient(135deg, #3b82f6, #7d4af5) border-box;
+  background: linear-gradient(135deg, #44a2ff, #7d4af5) border-box;
   -webkit-mask: 
     linear-gradient(#fff 0 0) padding-box, 
     linear-gradient(#fff 0 0);
@@ -291,9 +301,9 @@ const projects = ref([
   height: 50px;
   border-radius: 45px;
   border: none;
-  background-color: #3b82f6;
+  background-color: #44a2ff;
   color: white;
-  box-shadow: 0px 10px 10px rgb(215, 193, 255) inset,
+  box-shadow: 0px 10px 10px rgb(60, 158, 255) inset,
   0px 5px 10px rgba(5, 5, 5, 0.212),
   0px -10px 10px rgb(58, 124, 255) inset;
   cursor: pointer;

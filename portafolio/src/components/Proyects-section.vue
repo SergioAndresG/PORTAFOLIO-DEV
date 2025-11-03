@@ -82,7 +82,7 @@ const projects = ref([
     },
     {
         id: 2,
-        title: 'Gestor de Formatos F-165',
+        title: 'Gestor de Formatos\nF-165',
         description: 'Aplicativo web encargado de generar y gestionar reportes f-165 (Etapa Productiva).',
         icon: "https://i.postimg.cc/26mgHG97/Captura-de-pantalla-2025-10-29-111936.png",
         techs: ['iconPython', 'iconVueJs', 'iconMySQL'],
@@ -124,7 +124,7 @@ const projects = ref([
               :key="project.id" 
               class="project-wrapper">
                 <div  class="project-card">
-                    <h3 class="project-title">{{ project.title }}</h3>
+                    <h3 class="project-title" :style="{ 'white-space': 'pre-wrap' }">{{ project.title }}</h3>
                     <div class="project-icon">
                         <img :src="project.icon" :alt="project.title" />
                     </div>
@@ -213,7 +213,7 @@ const projects = ref([
 .project-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); 
-  gap: 2rem;
+  gap: 1.3rem;
   padding: 1.5rem;
   margin-bottom: 0;
   transition: border-color 0.3s ease;
@@ -248,12 +248,7 @@ const projects = ref([
   display: flex;
   flex-direction: column;
   position: relative;
-  padding-bottom: 20px;
-}
-
-.project-card:hover .project-icon img {
-  transform: scale(1.1) ;
-  filter: brightness(1.05) contrast(1.1);
+  padding-bottom: 36px;
 }
 /* Brillo diagonal animado */
 .project-icon::after {
@@ -304,6 +299,10 @@ const projects = ref([
 }
 .project-card:hover {
   transform: translateY(-8px);
+}
+.project-card:hover .project-icon img {
+  transform: scale(1.1) ;
+  filter: brightness(1.05) contrast(1.1);
 }
 .project-card:hover .card-overlay {
     opacity: 1;
@@ -359,24 +358,16 @@ const projects = ref([
   transform: scale(1.2) translateY(-4px);
   box-shadow: 0 8px 16px rgba(68, 162, 255, 0.3);
 }
-.card-overlay {
-  inset: 0;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
 .buttom-modal{
-  position: absolute;           /* ← Cambio clave */
   bottom: 0; 
-  left: 0;  
-  right: 0;
+  left: 50%;
+  position: absolute;
   width: 150px;
   height: 50px;
   padding:  0.875rem 1.5rem;
   border: none;
-  border-radius: 0.75rem;
+  border-radius: 10rem;
   font-weight: bold;
-  position: relative;
   border: none;
   background-color: #44a2ff;
   color: white;
@@ -384,11 +375,10 @@ const projects = ref([
   0px 5px 10px rgba(5, 5, 5, 0.212),
   0px -10px 10px rgb(58, 124, 255) inset;
   cursor: pointer;
-  transform: translateY(20px);
   transition: all 0.3s ease 0.1s;
 
   opacity: 0;
-  transform: translateY(20px);
+  transform: translate(-50%, 0);
   transition: all 0.6s cubic-bezier(0.68, -0.55, 0.256, 1.55);
   box-shadow:  0 0 0 rgba(68, 162, 255, 0);
   pointer-events: none;
@@ -396,18 +386,17 @@ const projects = ref([
 }
 .project-wrapper:hover .buttom-modal {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate(-50%, -20px);
   box-shadow: 0 8px 20px rgba(68, 162, 255, 0.4);
   pointer-events: auto; 
 } 
+
 .project-wrapper:hover .project-card {
   transform: translateY(-10px);
   border-color: #64748b;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
-.project-card:hover .buttom-modal{
-  transform: translateY(0);
-}
+
 .buttom-modal:hover{
   background-color: #4892f3;
   animation: jello-horizontal 0.9s both;
@@ -433,31 +422,25 @@ const projects = ref([
 }
 @keyframes jello-horizontal {
   0% {
-    transform: scale3d(1, 1, 1);
+    transform: translate(-50%, -22px) scale3d(1, 1, 1);
   }
-
   30% {
-    transform: scale3d(1.25, 0.75, 1);
+    transform: translate(-50%, -22px) scale3d(1.25, 0.75, 1);
   }
-
   40% {
-    transform: scale3d(0.75, 1.25, 1);
+    transform: translate(-50%, -22px) scale3d(0.75, 1.25, 1);
   }
-
   50% {
-    transform: scale3d(1.15, 0.85, 1);
+    transform: translate(-50%, -22px) scale3d(1.15, 0.85, 1);
   }
-
   65% {
-    transform: scale3d(0.95, 1.05, 1);
+    transform: translate(-50%, -22px) scale3d(0.95, 1.05, 1);
   }
-
   75% {
-    transform: scale3d(1.05, 0.95, 1);
+    transform: translate(-50%, -22px) scale3d(1.05, 0.95, 1);
   }
-
   100% {
-    transform: scale3d(1, 1, 1);
+    transform: translate(-50%, -22px) scale3d(1.05, 1.05, 1);
   }
 }
 @media (max-width: 1024px) {

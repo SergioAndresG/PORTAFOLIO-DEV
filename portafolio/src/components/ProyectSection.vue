@@ -85,7 +85,7 @@ const projects = ref([
         title: 'Gestor de Formatos\nF-165',
         description: 'Aplicativo web encargado de generar y gestionar reportes f-165 (Etapa Productiva).',
         icon: "https://i.postimg.cc/26mgHG97/Captura-de-pantalla-2025-10-29-111936.png",
-        techs: ['iconPython', 'iconVueJs', 'iconMySQL'],
+        techs: ['iconPython', 'iconFatApi', 'iconVueJs', 'iconMySQL'],
         color: '#68a063',
         category: 'Full Stack',
         github: 'https://github.com/SergioAndresG/gestor-f165',
@@ -95,7 +95,7 @@ const projects = ref([
       title: 'Coffe - Bike | Sistema POS para Cafetería',
       description: 'Aplicación full-stack para gestión de inventario, pedidos de los clientes y ventas',
       icon: 'https://i.postimg.cc/zvjWwxsB/Captura-de-pantalla-2025-10-30-171308.png',
-      techs: ['iconPython', 'iconFatApi', 'iconVueJs', 'iconMySQL'],
+      techs: ['iconPython', 'iconFatApi', 'iconVueJs', 'iconMySQL', 'iconDocker'],
       color: '#68a063',
       category: 'Full Stack',
       github: 'primeroorganizo el readme.com'
@@ -225,7 +225,6 @@ const projects = ref([
   position: relative;
   z-index: 10;
   text-align: center;
-
 }
 .project-icon {
   position: relative;
@@ -267,7 +266,6 @@ const projects = ref([
   transform: skewX(-25deg);
   transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-
 /* Opcional: Borde brillante */
 .project-icon::before {
   content: '';
@@ -343,19 +341,19 @@ const projects = ref([
   margin-bottom: 0.75rem;
 }
 .tech-icon {
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 1.6rem;
+  height: 1.6rem;
   padding: 0.5rem;                              
-  background: rgba(68, 162, 255, 0.1);         
+  background: rgba(1, 13, 24, 0.1);         
   border: 1px solid rgba(68, 162, 255, 0.3);  
-  border-radius: 50%;                          
+  border-radius: 20%;                          
   transition: all 0.3s ease;
   cursor: pointer;
 }
 .tech-icon:hover {
   background: rgba(68, 162, 255, 0.2);
   border-color: rgba(68, 162, 255, 0.6);
-  transform: scale(1.2) translateY(-4px);
+  transform: scale(1.1) translateY(-4px);
   box-shadow: 0 8px 16px rgba(68, 162, 255, 0.3);
 }
 .buttom-modal{

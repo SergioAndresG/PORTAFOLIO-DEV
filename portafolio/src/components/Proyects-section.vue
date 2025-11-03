@@ -92,7 +92,7 @@ const projects = ref([
     },
     {
       id: 3,
-      title: 'CoffeBike - Sistema POS para Cafetería',
+      title: 'Coffe - Bike | Sistema POS para Cafetería',
       description: 'Aplicación full-stack para gestión de inventario, pedidos de los clientes y ventas',
       icon: 'https://i.postimg.cc/zvjWwxsB/Captura-de-pantalla-2025-10-30-171308.png',
       techs: ['iconPython', 'iconFatApi', 'iconVueJs', 'iconMySQL'],
@@ -120,7 +120,10 @@ const projects = ref([
 
         <div class="container">
             <div class="project-grid">
-                <div v-for="project in projects" :key="project.id" class="project-card">
+              <div v-for="project in projects" 
+              :key="project.id" 
+              class="project-wrapper">
+                <div  class="project-card">
                     <h3 class="project-title">{{ project.title }}</h3>
                     <div class="project-icon">
                         <img :src="project.icon" :alt="project.title" />
@@ -135,16 +138,16 @@ const projects = ref([
                           :title="tech.replace('icon', '')"
                           class="tech-icon">
                     </div>
-                      
-                    <div class="card-overlay">
-                      <button class="buttom-modal" @click="openModal(project)">Más información</button>
-                    </div>
-                    
-                </div>
+               </div> 
+                  <div class="button-wrapper">
+                    <button class="buttom-modal" @click="openModal(project)">
+                      Ver Detalles
+                    </button>
+                  </div>      
+              </div>
             </div>
         </div>
     </section>
-
     <CardMoreInfoProyects 
         :show="isModalOpen" 
         :project="activeProject" 
@@ -222,11 +225,12 @@ const projects = ref([
   position: relative;
   z-index: 10;
   text-align: center;
+
 }
 .project-icon {
   position: relative;
   width: 100%;
-  height: 280px;
+  height: 240px;
   overflow: hidden;
   border-radius: 0.75rem;
   margin-bottom: 1.25rem;
@@ -240,6 +244,13 @@ const projects = ref([
   transform: scale(1);
   filter: brightness(0.85) contrast(1.05);
 }
+.project-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-bottom: 20px;
+}
+
 .project-card:hover .project-icon img {
   transform: scale(1.1) ;
   filter: brightness(1.05) contrast(1.1);
@@ -283,12 +294,13 @@ const projects = ref([
 }
 .project-card {
   position: relative;
-  overflow: hidden;
-  border: #475569 solid 2px;
+  border: 2px solid #475569;
   background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(10px);
   border-radius: 1rem;
-  padding: 1.5rem;
-  transition: transform 0.3s ease-in-out;
+  padding: 1.25rem;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 2;
 }
 .project-card:hover {
   transform: translateY(-8px);
@@ -304,46 +316,67 @@ const projects = ref([
   font-size: 1.5rem;
   font-weight: 600;
   color: #44a2ff;
-  margin-top: 1.5rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 .project-card:hover .project-title {
   color: #60b5ff;             
 }
 
 .project-description{
+  margin: 0.75rem 0 1rem;
   font-size: 1rem;
   color: #cbd5e1;
   margin-top: 0.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.75rem;
   border-bottom: solid #475569 1px;
-  padding-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
   min-height: 3.5rem;
 }
+
 .container-techs{
-  width: 300px;
   display: flex;
-  justify-content:left;
-  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 0;
+  margin-bottom: 0.75rem;
 }
 .tech-icon {
-  width: 2rem;
-  height: 2rem;
-  margin: 0.5rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  padding: 0.5rem;                              
+  background: rgba(68, 162, 255, 0.1);         
+  border: 1px solid rgba(68, 162, 255, 0.3);  
+  border-radius: 50%;                          
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.tech-icon:hover {
+  background: rgba(68, 162, 255, 0.2);
+  border-color: rgba(68, 162, 255, 0.6);
+  transform: scale(1.2) translateY(-4px);
+  box-shadow: 0 8px 16px rgba(68, 162, 255, 0.3);
 }
 .card-overlay {
   inset: 0;
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
-  pointer-events: none;
 }
 .buttom-modal{
-  font-weight: bold;
-  border: none;
-  position: relative;
+  position: absolute;           /* ← Cambio clave */
+  bottom: 0; 
+  left: 0;  
+  right: 0;
   width: 150px;
   height: 50px;
-  border-radius: 45px;
+  padding:  0.875rem 1.5rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: bold;
+  position: relative;
   border: none;
   background-color: #44a2ff;
   color: white;
@@ -351,8 +384,26 @@ const projects = ref([
   0px 5px 10px rgba(5, 5, 5, 0.212),
   0px -10px 10px rgb(58, 124, 255) inset;
   cursor: pointer;
-  transform: translateY(10px);
+  transform: translateY(20px);
   transition: all 0.3s ease 0.1s;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.256, 1.55);
+  box-shadow:  0 0 0 rgba(68, 162, 255, 0);
+  pointer-events: none;
+  z-index: 3;
+}
+.project-wrapper:hover .buttom-modal {
+  opacity: 1;
+  transform: translateY(0);
+  box-shadow: 0 8px 20px rgba(68, 162, 255, 0.4);
+  pointer-events: auto; 
+} 
+.project-wrapper:hover .project-card {
+  transform: translateY(-10px);
+  border-color: #64748b;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 .project-card:hover .buttom-modal{
   transform: translateY(0);
@@ -380,7 +431,6 @@ const projects = ref([
   bottom: 7px;
   border-radius: 50%;
 }
-
 @keyframes jello-horizontal {
   0% {
     transform: scale3d(1, 1, 1);
@@ -410,15 +460,12 @@ const projects = ref([
     transform: scale3d(1, 1, 1);
   }
 }
-
-
 @media (max-width: 1024px) {
   .project-grid {
     grid-template-columns: 1fr; /* ← 1 columna en tablet */
     gap: 1.5rem;
   }
 }
-
 @media (max-width: 768px) {
   .project-grid {
     grid-template-columns: 1fr;

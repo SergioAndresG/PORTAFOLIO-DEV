@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import Header from '../components/Header.vue'
-import AboutMe from '../components/About-me.vue'
+import AboutMe from '../components/AboutMe.vue'
 import StackSection from '../components/Stack-section.vue'
-import ProyectsSection from '../components/Proyects-section.vue'
+import ProyectsSection from '../components/ProyectSection.vue'
+import WorkExperience from '../components/WorkExperience.vue'
 import { icon } from '@fortawesome/fontawesome-svg-core'
 import { fab, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
@@ -51,6 +52,7 @@ import { fab, faLinkedin } from '@fortawesome/free-brands-svg-icons'
   <AboutMe />
   <StackSection />
   <ProyectsSection />
+  <WorkExperience /> 
 
 
 </template>

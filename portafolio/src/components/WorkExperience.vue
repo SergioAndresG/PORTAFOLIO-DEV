@@ -72,6 +72,12 @@ onUnmounted(() => {
       </p>
     </div>
 
+    <!-- Efectos de fondo -->
+    <div class="background-effects">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+    </div>
+
     <div class="container">
       <!-- Timeline -->
       <div class="timeline">
@@ -79,7 +85,7 @@ onUnmounted(() => {
           v-for="(exp, index) in experiences" 
           :key="index"
           class="timeline-item"
-          :class="{ 'left': index % 2 === 0, 'right': index % 2 !== 0 }"
+          :class="{ 'right': index % 2 === 0, 'left': index % 2 !== 0 }"
         >
           <!-- Punto en la línea -->
           <div class="timeline-dot"></div>
@@ -167,13 +173,46 @@ onUnmounted(() => {
   transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   max-width: 880px;
 }
+/* Efectos de fondo */
+.background-effects {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+.blob-1 {
+  top: 10rem;
+  left: 7rem;
+  width: 18rem;
+  height: 18rem;
+  background: #a855f7;
+  animation: float 8s ease-in-out infinite;
+}
+.blob-2 {
+  bottom: 5rem;
+  right: 2.5rem;
+  width: 24rem;
+  height: 24rem;
+  background: #3b82f6;
+  animation: float 10s ease-in-out infinite reverse;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -30px) scale(1.1); }
+}
 .experience-section {
   position: relative;
   padding: 5rem 0;
   min-height: 100vh;
 }
 .container {
-  max-width: 1100px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 2rem;
   position: relative;
@@ -204,20 +243,20 @@ onUnmounted(() => {
 .timeline {
   position: relative;
   padding: 2rem 0;
+  transform: translateX(22%);
 }
 /* Línea vertical central */
 .timeline::before {
   content: '';
   position: absolute;
-  left: 50%;
   top: 0;
   bottom: 0;
-  width: 2px;
+  width: 1.5px;
   background: linear-gradient(
     180deg,
     transparent,
     #44a2ff 10%,
-    #44a2ff 90%,
+    #44a2ff 70%,
     transparent
   );
   transform: translateX(-50%);
@@ -231,7 +270,6 @@ onUnmounted(() => {
 /* Punto en la línea */
 .timeline-dot {
   position: absolute;
-  left: 50%;
   top: 30px;
   width: 20px;
   height: 20px;
@@ -253,7 +291,7 @@ onUnmounted(() => {
 }
 /* Contenido del timeline */
 .timeline-content {
-  width: 45%;
+  width: 50%;
   position: relative;
 }
 /* Items a la izquierda */
@@ -263,7 +301,7 @@ onUnmounted(() => {
 }
 /* Items a la derecha */
 .timeline-item.right .timeline-content {
-  margin-left: 55%;
+  margin-left: 6.5%;
   text-align: left;
 }
 /* Fecha */
@@ -384,7 +422,6 @@ onUnmounted(() => {
   position: relative;
   line-height: 1.6;
 }
-
 .achievements li::before {
   content: '✓';
   position: absolute;
@@ -392,7 +429,6 @@ onUnmounted(() => {
   color: #4ade80;
   font-weight: bold;
 }
-
 /* Tech stack */
 .tech-stack {
   display: flex;

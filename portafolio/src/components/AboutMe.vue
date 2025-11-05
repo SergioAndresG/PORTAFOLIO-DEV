@@ -70,15 +70,6 @@
 
 <style scoped>
 /* === LÍNEAS DIVISORAS === */
-.linea-superior {
-  width: 200px;
-  height: 2px;
-  background-color: rgba(240, 248, 255, 0.3);
-  border: none;
-  margin: 17px auto 0 2rem;
-  transition: width 0.3s ease;
-}
-
 .linea-container {
   display: flex;
   justify-content: center;

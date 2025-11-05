@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Header from '../components/Header.vue'
 import AboutMe from '../components/AboutMe.vue'
-import StackSection from '../components/Stack-section.vue'
+import StackSection from '../components/StackSection.vue'
 import ProyectsSection from '../components/ProyectSection.vue'
 import WorkExperience from '../components/WorkExperience.vue'
 import { icon } from '@fortawesome/fontawesome-svg-core'

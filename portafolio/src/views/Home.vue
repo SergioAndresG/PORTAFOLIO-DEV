@@ -4,8 +4,6 @@ import AboutMe from '../components/AboutMe.vue'
 import StackSection from '../components/StackSection.vue'
 import ProyectsSection from '../components/ProyectSection.vue'
 import WorkExperience from '../components/WorkExperience.vue'
-import { icon } from '@fortawesome/fontawesome-svg-core'
-import { fab, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import Achievements from '../components/Achievements.vue'
 
 

@@ -60,23 +60,23 @@ onUnmounted(() => {
             </p>
         </div>
 
-    <div class="container">
-        <div class="achievements-card">
-            <div class="container-trophy">
-            <svg class="svg-icon" height="100" preserveAspectRatio="xMidYMid meet" viewBox="0 0 100 100" width="100" x="0" xmlns="http://www.w3.org/2000/svg" y="0">
-                <path d="M62.11,53.93c22.582-3.125,22.304-23.471,18.152-29.929-4.166-6.444-10.36-2.153-10.36-2.153v-4.166H30.099v4.166s-6.194-4.291-10.36,2.153c-4.152,6.458-4.43,26.804,18.152,29.929l5.236,7.777v8.249s-.944,4.597-4.833,4.986c-3.903,.389-7.791,4.028-7.791,7.374h38.997c0-3.347-3.889-6.986-7.791-7.374-3.889-.389-4.833-4.986-4.833-4.986v-8.249l5.236-7.777Zm7.388-24.818s2.833-3.097,5.111-1.347c2.292,1.75,2.292,15.86-8.999,18.138l3.889-16.791Zm-44.108-1.347c2.278-1.75,5.111,1.347,5.111,1.347l3.889,16.791c-11.291-2.278-11.291-16.388-8.999-18.138Z">
-                </path>
-            </svg>  
-            <div class="container__star">
+        <div class="container">
+            <div class="achievements-card">
+                <div class="container-trophy">
+                <svg class="svg-icon" height="100" preserveAspectRatio="xMidYMid meet" viewBox="0 0 100 100" width="100" x="0" xmlns="http://www.w3.org/2000/svg" y="0">
+                    <path d="M62.11,53.93c22.582-3.125,22.304-23.471,18.152-29.929-4.166-6.444-10.36-2.153-10.36-2.153v-4.166H30.099v4.166s-6.194-4.291-10.36,2.153c-4.152,6.458-4.43,26.804,18.152,29.929l5.236,7.777v8.249s-.944,4.597-4.833,4.986c-3.903,.389-7.791,4.028-7.791,7.374h38.997c0-3.347-3.889-6.986-7.791-7.374-3.889-.389-4.833-4.986-4.833-4.986v-8.249l5.236-7.777Zm7.388-24.818s2.833-3.097,5.111-1.347c2.292,1.75,2.292,15.86-8.999,18.138l3.889-16.791Zm-44.108-1.347c2.278-1.75,5.111,1.347,5.111,1.347l3.889,16.791c-11.291-2.278-11.291-16.388-8.999-18.138Z">
+                    </path>
+                </svg>  
+                <div class="container__star">
+                    
+                    <div class="star-eight"></div>
+                </div>
                 
-                <div class="star-eight"></div>
+                <div></div></div>
+                <h3 class="title-card">SENA Soft 2024</h3>
+                <p class="subtitle-card">Gracias a la divulagacion de la competencia, puede presentar un cuestionario para participar en la categoria de desarrollo integral, en el cual tuve un resuktado favorable y cumpli requisitos para poarticipar en la categoria, dentro de la misma, forme equipo con dos personas maravillosas, con quienes nos adaptamos para desarrollar la solución que teniamos plateada, fue una competencia con duración de una semana, en donde implemetamos todas nuestras habilidades, como desarrolladores, luego, fuimos a la sede de globant en Cali, valle del cauca en donde presentamos nuestra solución al jurado de la empresa, gracias a nuestros conocimientos, esfuerzo y dedicación, ocupamos el primer lugar en la categoria</p>
             </div>
-            
-            <div></div></div>
-            <h3 class="title-card">SENA Soft 2024</h3>
-            <p class="subtitle-card">Gracias a la divulagacion de la competencia, puede presentar un cuestionario para participar en la categoria de desarrollo integral, en el cual tuve un resuktado favorable y cumpli requisitos para poarticipar en la categoria, dentro de la misma, forme equipo con dos personas maravillosas, con quienes nos adaptamos para desarrollar la solución que teniamos plateada, fue una competencia con duración de una semana, en donde implemetamos todas nuestras habilidades, como desarrolladores, luego, fuimos a la sede de globant en Cali, valle del cauca en donde presentamos nuestra solución al jurado de la empresa, gracias a nuestros conocimientos, esfuerzo y dedicación, ocupamos el primer lugar en la categoria</p>
         </div>
-    </div>
 
     </section>
 

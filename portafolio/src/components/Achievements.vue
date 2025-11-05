@@ -8,21 +8,31 @@ const achievementVisible = ref(false)
 
 // Función para manejar el scroll y animar la línea
 const handleScroll = () => {
-    const scrollPosition = window.scrollY
-    const windowHeight = window.innerHeight
-    
-    // Calcular el ancho de la línea basado en el scroll
-    // La línea crece de 200px a 880px (55rem = 880px)
-    const maxScroll = windowHeight * 0.5 // Crece hasta la mitad de la primera pantalla
-    const progress = Math.min(scrollPosition / maxScroll, 1)
-    lineWidth.value = 200 + (680 * progress) // De 200px a 880px
-    
-    // Detectar si la sección "Sobre Mi" está visible
-    const ExperienceSection = document.querySelector('.achivemnets-section')
-    if (ExperienceSection) {
-        const rect = ExperienceSection.getBoundingClientRect()
-        achievementVisible.value = rect.top < windowHeight * 0.8
+  const offStart = 100
+  const windowHeight = window.innerHeight
+
+  // Detectar si la sección "Stack" está visible
+  const stackSection = document.querySelector('.achivemnets-section')
+
+  if (stackSection) {
+    const rect = stackSection.getBoundingClientRect()
+
+    achievementVisible.value = rect.top < windowHeight * 0.8
+
+
+    if ((rect.top + offStart) < windowHeight && rect.bottom > 0) {
+      // La seccion esta visible
+      const sectionProgress = Math.max(0, Math.min(1,
+        (windowHeight - rect.top) / (windowHeight * 0.5)
+      ))
+
+      lineWidth.value = 200 + ( 680 * sectionProgress )
+    } else if (rect.top >= windowHeight){
+      lineWidth.value = 0
+    } else {
+      lineWidth.value = 800
     }
+  }
 }
 
 onMounted(() => {
@@ -73,5 +83,28 @@ onUnmounted(() => {
     transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     max-width: 880px;
 }
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(-40px);
+  transition: all 0.7s ease;
+}
+.header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #cbd5e1;
+  transition-delay: 150ms;
+}
 </style>

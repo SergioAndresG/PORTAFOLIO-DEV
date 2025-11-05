@@ -26,24 +26,34 @@ const experiences = ref([
   },
 ])
 
-    // Función para manejar el scroll y animar la línea
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY
-      const windowHeight = window.innerHeight
-      
-      // Calcular el ancho de la línea basado en el scroll
-      // La línea crece de 200px a 880px (55rem = 880px)
-      const maxScroll = windowHeight * 0.5 // Crece hasta la mitad de la primera pantalla
-      const progress = Math.min(scrollPosition / maxScroll, 1)
-      lineWidth.value = 200 + (680 * progress) // De 200px a 880px
-      
-      // Detectar si la sección "Sobre Mi" está visible
-      const ExperienceSection = document.querySelector('.experience-section')
-      if (ExperienceSection) {
-          const rect = ExperienceSection.getBoundingClientRect()
-          ExperienceVisible.value = rect.top < windowHeight * 0.8
-      }
+// Función para manejar el scroll y animar la línea
+const handleScroll = () => {
+  const offStart = 100
+  const windowHeight = window.innerHeight
+
+  // Detectar si la sección "Stack" está visible
+  const experienceSection = document.querySelector('.experience-section')
+
+  if (experienceSection) {
+    const rect = experienceSection.getBoundingClientRect()
+
+    ExperienceVisible.value = rect.top < windowHeight * 0.8
+
+
+    if ((rect.top + offStart) < windowHeight && rect.bottom > 0) {
+      // La seccion esta visible
+      const sectionProgress = Math.max(0, Math.min(1,
+        (windowHeight - rect.top) / (windowHeight * 0.5)
+      ))
+
+      lineWidth.value = 200 + ( 680 * sectionProgress )
+    } else if (rect.top >= windowHeight){
+      lineWidth.value = 0
+    } else {
+      lineWidth.value = 800
     }
+  }
+}
 
 onMounted(() => {
   svgReady.value = true

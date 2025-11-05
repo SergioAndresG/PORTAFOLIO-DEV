@@ -4,7 +4,7 @@ import CardMoreInfoProyects from './Cards-More-Info/CardMoreInfoProyects.vue'
 
 const svgReady = ref(false)
 const lineWidth = ref(0)
-const StackVisible = ref(false)
+const ProjectVisible = ref(false)
 
 // Variable para controlar si el modal está visible o no
 const isModalOpen = ref(false); 
@@ -26,18 +26,31 @@ const closeModal = () => {
 
 // Función para manejar el scroll y animar la línea
 const handleScroll = () => {
-    const scrollPosition = window.scrollY
-    const windowHeight = window.innerHeight
+  const offStart = 100
+  const windowHeight = window.innerHeight
 
-    const maxScroll = windowHeight * 0.5
-    const progress = Math.min(scrollPosition / maxScroll, 1)
-    lineWidth.value = 200 + (680 * progress)
+  // Detectar si la sección "Stack" está visible
+  const projectSection = document.querySelector('.project-section')
 
-    const StackVisibleSection = document.querySelector('.tech-stack-section')
-    if (StackVisibleSection) {
-        const rect = StackVisibleSection.getBoundingClientRect()
-        StackVisible.value = rect.top < windowHeight * 0.8
+  if (projectSection) {
+    const rect = projectSection.getBoundingClientRect()
+
+    ProjectVisible.value = rect.top < windowHeight * 0.8
+
+
+    if ((rect.top + offStart) < windowHeight && rect.bottom > 0) {
+      // La seccion esta visible
+      const sectionProgress = Math.max(0, Math.min(1,
+        (windowHeight - rect.top) / (windowHeight * 0.5)
+      ))
+
+      lineWidth.value = 200 + ( 680 * sectionProgress )
+    } else if (rect.top >= windowHeight){
+      lineWidth.value = 0
+    } else {
+      lineWidth.value = 800
     }
+  }
 }
 
 onMounted(() => {
@@ -109,7 +122,7 @@ const projects = ref([
         <hr class="linea-scroll" :style="{ width: lineWidth + 'px' }">
     </div>
 
-    <section class="tech-stack-section" :class="{'visible': StackVisible}"> 
+    <section class="project-section" :class="{'visible': ProjectVisible}"> 
         <!-- Header principal -->
         <div class="header" :class="{ visible }">
             <h2 class="title">Proyectos</h2>

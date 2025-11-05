@@ -78,7 +78,7 @@ onUnmounted(() => {
     <div class="header" :class="{ 'visible': ExperienceVisible }">
       <h2 class="title">Experiencia Laboral</h2>
       <p class="subtitle">
-        Mi trayectoria profesional y proyectos destacados
+        Mi trayectoria profesional
       </p>
     </div>
 

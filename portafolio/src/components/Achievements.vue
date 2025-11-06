@@ -94,7 +94,7 @@ onUnmounted(() => {
                 Junto a un equipo de dos desarrolladores, diseñamos e implementamos una 
                 solución integral en 7 días para la categoría de Desarrollo Integral. 
                 Presentamos el proyecto ante el jurado de Globant en Cali, obteniendo 
-                el primer lugar por la calidad técnica y ejecución de nuestra propuesta.
+                el primer lugar por innovación y ejecución de nuestra propuesta.
             </p>
 
             <!-- Stats destacadas -->
@@ -135,9 +135,9 @@ onUnmounted(() => {
             <!-- Tecnologías usadas -->
             <div class="tech-stack">
                 <span class="tech-badge">Vue.js</span>
-                <span class="tech-badge">FastAPI</span>
-                <span class="tech-badge">MySQL</span>
-                <span class="tech-badge">Docker</span>
+                <span class="tech-badge">Git</span>
+                <span class="tech-badge">Trabajo en equipo</span>
+                <span class="tech-badge">Gestión de Tiempo</span>
             </div>
 
             <!-- Footer con ubicación -->
@@ -146,7 +146,7 @@ onUnmounted(() => {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                 </svg>
-                Globant, Cali - Valle del Cauca
+                Cali - Valle del Cauca
                 </span>
             </div>
             </div>

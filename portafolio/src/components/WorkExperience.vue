@@ -136,7 +136,7 @@ onUnmounted(() => {
               <!-- Logros -->
               <ul class="achievements" v-if="exp.achievements">
                 <li v-for="achievement in exp.achievements" :key="achievement">
-                  ✓ {{ achievement }}
+                   {{ achievement }}
                 </li>
               </ul>
 

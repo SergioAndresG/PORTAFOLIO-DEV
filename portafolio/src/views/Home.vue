@@ -5,6 +5,7 @@ import StackSection from '../components/StackSection.vue'
 import ProyectsSection from '../components/ProyectSection.vue'
 import WorkExperience from '../components/WorkExperience.vue'
 import Achievements from '../components/Achievements.vue'
+import ContactMe from '../components/ContactMe.vue'
 
 
 </script>
@@ -53,6 +54,7 @@ import Achievements from '../components/Achievements.vue'
   <ProyectsSection />
   <WorkExperience /> 
   <Achievements />
+  <ContactMe />
 
 
 </template>

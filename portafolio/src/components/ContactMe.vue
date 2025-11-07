@@ -60,21 +60,18 @@ onUnmounted(() => {
         </p>
     </div>
 
-  <!-- FILA 1: EMAIL (PRINCIPAL) -->
   <div class="contact-grid">
     <a href="mailto:tuemail@dominio.com" class="contact-card primary">
-      <div class="icon">Envelope</div>
-      <div class="label">Email</div>
-      <div class="value">tuemail@dominio.com</div>
+      <div class="icon">Correo Electronico</div>
+      <div class="value">sergiogarcia3421@gmail.com</div>
     </a>
   </div>
 
-  <!-- FILA 2: WHATSAPP + CALENDLY (OPCIONAL) -->
   <div class="contact-grid secondary">
     <a href="https://wa.me/573001234567" target="_blank" class="contact-card">
-      <div class="icon">Phone</div>
+      <div class="icon">Teléfono</div>
       <div class="label">WhatsApp</div>
-      <div class="value">+57 300 123 4567</div>
+      <div class="value">+57 304 614 5101</div>
     </a>
     <a href="https://calendly.com/tu-perfil" target="_blank" class="contact-card">
       <div class="icon">Calendar</div>
@@ -85,7 +82,7 @@ onUnmounted(() => {
 
   <!-- FILA 3: UBICACIÓN + DISPONIBILIDAD -->
   <div class="footer-note">
-    <p>Colombia • Disponible para remoto o híbrido</p>
+    <p> 📍 Colombia • Disponible para remoto o híbrido</p>
   </div>
 </section>
 </template>
@@ -111,19 +108,16 @@ onUnmounted(() => {
   padding: 5rem 2rem;
   text-align: center;
 }
-
 .contact-section h2 {
   font-size: 3rem;
   color: white;
   margin-bottom: 0.5rem;
 }
-
 .subtitle {
   color: #94a3b8;
   font-size: 1.2rem;
   margin-bottom: 3rem;
 }
-
 .contact-grid {
   display: flex;
   justify-content: center;
@@ -131,7 +125,6 @@ onUnmounted(() => {
   margin-bottom: 2rem;
   flex-wrap: wrap;
 }
-
 .contact-card {
   background: rgba(30, 41, 59, 0.8);
   border: 1.5px solid #334155;
@@ -143,36 +136,30 @@ onUnmounted(() => {
   transition: all 0.3s ease;
   backdrop-filter: blur(8px);
 }
-
 .contact-card.primary {
   border-color: #60a5fa;
   background: rgba(96, 165, 250, 0.1);
 }
-
 .contact-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 30px rgba(96, 165, 250, 0.3);
   border-color: #60a5fa;
 }
-
 .contact-card .icon {
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
-
 .contact-card .label {
   font-size: 0.9rem;
   color: #94a3b8;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-
 .contact-card .value {
   font-size: 1.1rem;
   font-weight: 600;
   color: white;
 }
-
 .footer-note {
   color: #64748b;
   font-size: 1rem;

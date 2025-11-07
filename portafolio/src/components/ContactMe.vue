@@ -47,20 +47,47 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <section class="contact-section">
+<section class="contact-section">
+    <!--Linea divisora-->
+    <div class="linea-container">
+        <hr class="linea-scroll" :style="{ width:lineWidth + 'px'  }">
+    </div>
 
-        <!--Linea divisora-->
-        <div class="linea-container">
-            <hr class="linea-scroll" :style="{ width:lineWidth + 'px'  }">
-        </div>
+    <div class="header" :class="{ 'visible': achievementVisible }">
+        <h2 class="title">Contacto</h2>
+        <p class="subtitle">
+            ¿Tienes un proyecto en mente? Estoy disponible para colaborar
+        </p>
+    </div>
 
-        <div class="header" :class="{ 'visible': achievementVisible }">
-            <h2 class="title">Contacto</h2>
-            <p class="subtitle">
-                 ¡Contactame para trabajar juntos!
-            </p>
-        </div>
-    </section>
+  <!-- FILA 1: EMAIL (PRINCIPAL) -->
+  <div class="contact-grid">
+    <a href="mailto:tuemail@dominio.com" class="contact-card primary">
+      <div class="icon">Envelope</div>
+      <div class="label">Email</div>
+      <div class="value">tuemail@dominio.com</div>
+    </a>
+  </div>
+
+  <!-- FILA 2: WHATSAPP + CALENDLY (OPCIONAL) -->
+  <div class="contact-grid secondary">
+    <a href="https://wa.me/573001234567" target="_blank" class="contact-card">
+      <div class="icon">Phone</div>
+      <div class="label">WhatsApp</div>
+      <div class="value">+57 300 123 4567</div>
+    </a>
+    <a href="https://calendly.com/tu-perfil" target="_blank" class="contact-card">
+      <div class="icon">Calendar</div>
+      <div class="label">Agendar reunión</div>
+      <div class="value">15 min gratis</div>
+    </a>
+  </div>
+
+  <!-- FILA 3: UBICACIÓN + DISPONIBILIDAD -->
+  <div class="footer-note">
+    <p>Colombia • Disponible para remoto o híbrido</p>
+  </div>
+</section>
 </template>
 
 <style scoped>
@@ -80,26 +107,74 @@ onUnmounted(() => {
     transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     max-width: 880px;
 }
-.header {
+.contact-section {
+  padding: 5rem 2rem;
   text-align: center;
-  margin-bottom: -2.8rem;
-  opacity: 0;
-  transform: translateY(-40px);
-  transition: all 0.7s ease;
+}
 
-}
-.header.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.title {
+.contact-section h2 {
   font-size: 3rem;
-  font-weight: 700;
   color: white;
   margin-bottom: 0.5rem;
 }
+
 .subtitle {
-  font-size: 1.25rem;
-  color: #cbd5e1;
+  color: #94a3b8;
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+}
+
+.contact-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.contact-card {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1.5px solid #334155;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  width: 280px;
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.contact-card.primary {
+  border-color: #60a5fa;
+  background: rgba(96, 165, 250, 0.1);
+}
+
+.contact-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(96, 165, 250, 0.3);
+  border-color: #60a5fa;
+}
+
+.contact-card .icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-card .label {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contact-card .value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+}
+
+.footer-note {
+  color: #64748b;
+  font-size: 1rem;
 }
 </style>

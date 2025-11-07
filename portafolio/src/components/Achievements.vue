@@ -12,7 +12,7 @@ const handleScroll = () => {
   const windowHeight = window.innerHeight
 
   // Detectar si la sección "Stack" está visible
-  const stackSection = document.querySelector('.achivemnets-section')
+  const stackSection = document.querySelector('.achievements-section')
 
   if (stackSection) {
     const rect = stackSection.getBoundingClientRect()
@@ -182,6 +182,16 @@ onUnmounted(() => {
   opacity: 1;
   transform: translateY(0);
 }
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+.subtitle {
+  font-size: 1.25rem;
+  color: #cbd5e1;
+}
 .container-trophy {
   width: 50px;
   display: flex;
@@ -235,16 +245,7 @@ onUnmounted(() => {
 .container-trophy:hover .svg-icon {
   animation: grow 1s linear infinite;
 }
-.title {
-  font-size: 3rem;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 0.5rem;
-}
-.subtitle {
-  font-size: 1.25rem;
-  color: #cbd5e1;
-}
+
 /* Card principal */
 .achievement-card {
   position: relative;

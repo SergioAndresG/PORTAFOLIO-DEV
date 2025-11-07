@@ -4,7 +4,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const svgReady = ref(false)
 const lineWidth = ref(0)
 const achievementVisible = ref(false)
-
+const cvPath = new URL('../assets/cv/SergioGarciaCV.pdf', import.meta.url).href
 
 // Función para manejar el scroll y animar la línea
 const handleScroll = () => {
@@ -47,44 +47,43 @@ onUnmounted(() => {
 </script>
 
 <template>
-<section class="contact-section">
-    <!--Linea divisora-->
-    <div class="linea-container">
-        <hr class="linea-scroll" :style="{ width:lineWidth + 'px'  }">
-    </div>
-
-    <div class="header" :class="{ 'visible': achievementVisible }">
-        <h2 class="title">Contacto</h2>
-        <p class="subtitle">
-            ¿Tienes un proyecto en mente? Estoy disponible para colaborar
-        </p>
-    </div>
-
-  <div class="contact-grid">
-    <a href="mailto:tuemail@dominio.com" class="contact-card primary">
-      <div class="icon">Correo Electronico</div>
-      <div class="value">sergiogarcia3421@gmail.com</div>
-    </a>
-  </div>
-
-  <div class="contact-grid secondary">
-    <a href="https://wa.me/573001234567" target="_blank" class="contact-card">
-      <div class="icon">Teléfono</div>
-      <div class="label">WhatsApp</div>
-      <div class="value">+57 304 614 5101</div>
-    </a>
-    <a href="https://calendly.com/tu-perfil" target="_blank" class="contact-card">
-      <div class="icon">Calendar</div>
-      <div class="label">Agendar reunión</div>
-      <div class="value">15 min gratis</div>
-    </a>
-  </div>
-
-  <!-- FILA 3: UBICACIÓN + DISPONIBILIDAD -->
-  <div class="footer-note">
-    <p> 📍 Colombia • Disponible para remoto o híbrido</p>
-  </div>
-</section>
+    <section class="contact-section">
+        <!--Linea divisora-->
+        <div class="linea-container">
+            <hr class="linea-scroll" :style="{ width:lineWidth + 'px'  }">
+        </div>
+        <div class="header" :class="{ 'visible': achievementVisible }">
+            <h2 class="title">Contacto</h2>
+            <p class="subtitle">
+                ¿Tienes un proyecto en mente? Hablemos
+            </p>
+        </div>
+        <!-- FILA 1: EMAIL PRINCIPAL -->
+        <div class="contact-grid">
+            <a href="mailto:sergiogarcia3421@gmail.com" class="contact-card primary">
+                <div class="icon">📧</div>
+                <div class="label">Email</div>
+                <div class="value">sergiogarcia3421@gmail.com</div>
+            </a>
+        </div>
+        <!-- FILA 2: CV + WHATSAPP -->
+        <div class="contact-grid secondary">
+            <a :href="cvPath" target="_blank" class="contact-card">
+                <div class="icon">📄</div>
+                <div class="label">Curriculum</div>
+                <div class="value">Descargar PDF</div>
+            </a>
+            <a href="https://wa.me/573046145101" target="_blank" class="contact-card">
+                <div class="icon">💬</div>
+                <div class="label">WhatsApp</div>
+                <div class="value">+57 304 614 5101</div>
+            </a>
+        </div>
+        <!-- FOOTER -->
+        <div class="footer-note">
+            <p>📍 Colombia • Disponible remoto o híbrido</p>
+        </div>
+    </section>
 </template>
 
 <style scoped>
@@ -130,7 +129,7 @@ onUnmounted(() => {
   border: 1.5px solid #334155;
   border-radius: 1rem;
   padding: 1.5rem;
-  width: 280px;
+  width: 310px;
   text-decoration: none;
   color: white;
   transition: all 0.3s ease;

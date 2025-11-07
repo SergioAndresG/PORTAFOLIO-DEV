@@ -33,9 +33,7 @@ import ContactMe from '../components/ContactMe.vue'
         <a href="https://www.linkedin.com/in/sergio-garcia-232b86335/">
           <font-awesome-icon :icon="['fab', 'linkedin']" />      
         </a>
-        <a href="https://www.instagram.com/dres.hp?utm_source=qr&igsh=ZmcydTV2a2E4aXBz" class="social-link instagram">
-          <font-awesome-icon :icon="['fab', 'instagram']" />      
-        </a> 
+
         <a href="https://github.com/SergioAndresG/" class="social-link github">
           <font-awesome-icon :icon="['fab', 'github']" />      
         </a> 

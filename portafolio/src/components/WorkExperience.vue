@@ -255,12 +255,18 @@ onUnmounted(() => {
   padding: 2rem 0;
   transform: translateX(22%);
 }
+/* Timeline */
+.timeline {
+  position: relative;
+  padding: 2rem 0;
+}
 /* Línea vertical central */
 .timeline::before {
   content: '';
   position: absolute;
   top: 0;
   bottom: 0;
+  left: 50%;
   width: 1.5px;
   background: linear-gradient(
     180deg,

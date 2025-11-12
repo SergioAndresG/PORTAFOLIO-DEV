@@ -139,7 +139,7 @@ onMounted(() => {
 
 <template>
   <!-- Línea animada con scroll -->
-  <div class="linea-container">
+  <div class="linea-container" id="stack">
     <hr class="linea-scroll" :style="{ width: lineWidth + 'px' }">
   </div>
 

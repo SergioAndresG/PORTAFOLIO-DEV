@@ -50,7 +50,7 @@ onUnmounted(() => {
     <section class="achievements-section">
 
         <!--Linea divisora-->
-        <div class="linea-container">
+        <div class="linea-container" id="achievements">
             <hr class="linea-scroll" :style="{ width:lineWidth + 'px'  }">
         </div>
 

@@ -43,12 +43,12 @@ import ContactMe from '../components/ContactMe.vue'
     </div>
   </div>
 
-  <AboutMe />
-  <StackSection />
-  <ProyectsSection />
-  <WorkExperience /> 
-  <Achievements />
-  <ContactMe />
+  <AboutMe  id="about-me" />
+  <StackSection id="stack"/>
+  <ProyectsSection id="projects"/>
+  <WorkExperience id="experience"/> 
+  <Achievements id="achievements"/>
+  <ContactMe id="contact-me"/>
 </template>
 
 <style scoped>

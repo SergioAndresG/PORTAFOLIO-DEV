@@ -42,23 +42,20 @@
 
     <!-- Sección Sobre Mi -->
     <section class="about-me-container" :class="{ 'visible': aboutMeVisible }">
-    <h2 class="about-me">Sobre Mí</h2>
+    <h2 class="about-me"><span class="enfasis-azul">Sobre Mí</span></h2>
     <div class="about-content">
         <p>
-            Soy Sergio Andrés, Tecnólogo en Análisis y Desarrollo de Software, y me emociona la idea de que <span class="enfasis-azul">“Lo que se puede imaginar, se puede programar” </span>.<br>
+            ¡Hola!, soy Sergio Andrés, Tecnólogo en Análisis y Desarrollo de Software.
         </p>
-
         <p>
-            Para mí, el desarrollo es mucho más que escribir código: es dar vida a soluciones que mejoran la vida de las personas. 
+            Para mí, el desarrollo es mucho más que escribir código, es dar vida a <span class="enfasis">soluciones que mejoran la vida de las personas.</span> 
         </p>
-
         <p> 
-            Tengo experiencia autónoma en desarrollo web Full Stack, creando proyectos donde la lógica y el diseño se 
+            Tengo experiencia en desarrollo web, <span class="enfasis">Backend</span> y <span class="enfasis">Front-End</span>, creando proyectos donde la lógica y el diseño se 
             unen para lograr experiencias funcionales y atractivas.
-            Fuera del código, soy una persona colaborativa, empática y 
-            comprometida. 
+            Fuera del código, soy una persona <span class="enfasis">colaborativa</span>, <span class="enfasis">empática</span> y 
+            <span class="enfasis">comprometida</span>.
         </p>
-
         <p>
             Disfruto trabajar en equipo, conocer a las 
             personas detrás de cada proyecto y aprender de ellas, porque 
@@ -90,8 +87,6 @@
 }
 /* === SECCIÓN SOBRE MÍ === */
 .about-me-container {
-  padding: 4rem 2rem;
-  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -109,7 +104,6 @@
   color: #ffffff;
   font-size: clamp(3rem, 4vw, 5rem);
   font-weight: 900;
-  margin-bottom: 4rem;
   letter-spacing: 1px;
 }
 
@@ -125,8 +119,12 @@
   color: #59acff;
 }
 
+.enfasis {
+  color: #e8e8e8;
+  font-weight: bolder;
+}
+
 .about-content p {
   margin-bottom: 2rem;
-
 }
 </style>

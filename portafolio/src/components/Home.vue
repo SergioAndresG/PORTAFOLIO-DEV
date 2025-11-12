@@ -1,16 +1,4 @@
-<script setup lang="ts">
-import Header from '../components/Header.vue'
-import AboutMe from '../components/AboutMe.vue'
-import StackSection from '../components/StackSection.vue'
-import ProyectsSection from '../components/ProyectSection.vue'
-import WorkExperience from '../components/WorkExperience.vue'
-import Achievements from '../components/Achievements.vue'
-import ContactMe from '../components/ContactMe.vue'
-</script>
-
-<template>
-  <Header></Header>
-  
+  <template>
   <!-- Línea divisora superior -->
   <hr class="linea-superior">
 
@@ -42,14 +30,8 @@ import ContactMe from '../components/ContactMe.vue'
       <img src="../assets/images/ImagenPor.png" alt="Sergio Garcia" class="imagen">
     </div>
   </div>
-
-  <AboutMe  id="about-me" />
-  <StackSection id="stack"/>
-  <ProyectsSection id="projects"/>
-  <WorkExperience id="experience"/> 
-  <Achievements id="achievements"/>
-  <ContactMe id="contact-me"/>
 </template>
+
 
 <style scoped>
 /* === HERO SECTION === */

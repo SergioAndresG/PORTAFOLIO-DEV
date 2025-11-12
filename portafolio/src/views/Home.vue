@@ -6,13 +6,10 @@ import ProyectsSection from '../components/ProyectSection.vue'
 import WorkExperience from '../components/WorkExperience.vue'
 import Achievements from '../components/Achievements.vue'
 import ContactMe from '../components/ContactMe.vue'
-
-
 </script>
 
 <template>
   <Header></Header>
-  
   
   <!-- Línea divisora superior -->
   <hr class="linea-superior">
@@ -40,7 +37,6 @@ import ContactMe from '../components/ContactMe.vue'
       </div>
     </div>
 
-
     <!-- Contenedor para la imagen -->
     <div class="imagen-container">
       <img src="../assets/images/ImagenPor.png" alt="Sergio Garcia" class="imagen">
@@ -53,8 +49,6 @@ import ContactMe from '../components/ContactMe.vue'
   <WorkExperience /> 
   <Achievements />
   <ContactMe />
-
-
 </template>
 
 <style scoped>
@@ -81,11 +75,13 @@ import ContactMe from '../components/ContactMe.vue'
   position: relative;
 }
 
+/* === NOMBRE OUTLINE === */
 .nombre-outline-svg {
   width: 100%;
   max-width: 700px;
   height: auto;
   overflow: visible;
+  display: block;
 }
 
 .nombre-outline-svg text {
@@ -100,6 +96,7 @@ import ContactMe from '../components/ContactMe.vue'
   animation: dibujar-trazo 4s ease-in-out forwards;
 }
 
+/* === NOMBRE SÓLIDO === */
 .nombre-solido {
   font-size: clamp(4rem, 10vw, 10rem);
   background: linear-gradient(10deg, #616161, #ffffff);
@@ -116,6 +113,7 @@ import ContactMe from '../components/ContactMe.vue'
   animation: aparecer-solido 1.8s 1.8s ease-out forwards;
 }
 
+/* === DESARROLLADOR === */
 .dev {
   font-size: clamp(1.1rem, 1.5vw, 1.8rem);
   color: #44a2ff;
@@ -139,27 +137,26 @@ import ContactMe from '../components/ContactMe.vue'
   scale: 1.03;
 }
 
+/* === REDES SOCIALES === */
 .redes-container {
   display: flex;
+  gap: 1.5rem;
   margin-left: 15rem;
   padding: 1rem;
   margin-top: 1rem;
 }
 
-.redes-container svg {
-  color: #d0d0d0;
-  width: 65px;
-}
-
 .redes-container a {
-  position:  relative;
+  position: relative;
   text-decoration: none;
   display: inline-block;
   padding-bottom: 5px;
 }
 
 .redes-container a svg {
-  font-size: 30px;
+  color: #d0d0d0;
+  width: 30px;
+  height: 30px;
   opacity: 0;
   transform: translateY(20px);
   animation: aparecer-redes 1.2s 3s ease-out forwards;
@@ -171,21 +168,19 @@ import ContactMe from '../components/ContactMe.vue'
   text-shadow: rgba(255, 255, 255, 0.25) 0px 25px 50px -12px;
 }
 
-/* Estado NORMAL: Línea invisible y con escala horizontal a cero */
 .redes-container a::after {
-  content: ""; /* Obligatorio */
-  position: absolute; /* Para posicionarla */
-  bottom: -5px; /* Coloca la línea en la parte inferior del enlace */
-  left: 0; /* Empieza desde la izquierda */
-  right: 0; /* Y termina en la derecha */
-  height: 2px; /* Grosor de la línea */
-  background-color: white; /* Color de la línea */
-  /* CLAVE PARA EL EFECTO: */
-  transform: scaleX(0); /* Inicialmente, la escala horizontal es CERO (invisible) */
-  transform-origin: center; /* La transformación parte del CENTRO */
-  transition: transform 0.3s ease-out; /* Animación suave solo para el 'transform' */
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease-out;
 }
-/* Muestra y anima la línea */
+
 .redes-container a:hover::after {
   transform: scaleX(0.5);
 }
@@ -197,13 +192,14 @@ import ContactMe from '../components/ContactMe.vue'
   opacity: 0;
   transform: translateY(40px);
   animation: aparecer-imagen 1.5s 2.5s ease-out forwards;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .imagen {
-  position: relative;
-  left: -5rem;
   height: 390px;
-  width: 395px;
+  width: 390px;
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid #616161;
@@ -215,7 +211,6 @@ import ContactMe from '../components/ContactMe.vue'
   transform: scale(1.02);
   box-shadow: 0 15px 40px rgba(154, 154, 154, 0.4);
 }
-
 
 /* === ANIMACIONES === */
 @keyframes dibujar-trazo {
@@ -264,76 +259,196 @@ import ContactMe from '../components/ContactMe.vue'
   }
 }
 
-/* === RESPONSIVE === */
-@media (max-width: 1200px) {
-  .hero-container {
-    gap: 2rem;
+/* === RESPONSIVE - PANTALLAS GRANDES === */
+@media (max-width: 1400px) {
+  .nombre-outline-svg text {
+    font-size: 150px;
   }
   
-  .imagen {
-    height: 400px;
-    width: 400px;
+  .nombre-solido {
+    font-size: clamp(3.5rem, 9vw, 9rem);
+    margin-left: 2.5rem;
   }
   
-  .linea-scroll {
-    max-width: 600px;
+  .dev {
+    margin-left: 7rem;
+  }
+  
+  .redes-container {
+    margin-left: 12rem;
   }
 }
 
+/* === RESPONSIVE - TABLETS LANDSCAPE === */
+@media (max-width: 1200px) {
+  .hero-container {
+    gap: 3rem;
+    margin-top: 6rem;
+  }
+  
+  .nombre-outline-svg text {
+    font-size: 130px;
+  }
+  
+  .nombre-solido {
+    font-size: clamp(3rem, 8vw, 8rem);
+    margin-top: -5rem;
+    margin-left: 2rem;
+  }
+  
+  .dev {
+    margin-top: -5rem;
+    margin-left: 5rem;
+  }
+  
+  .redes-container {
+    margin-left: 8rem;
+  }
+  
+  .imagen {
+    height: 350px;
+    width: 350px;
+  }
+}
+
+/* === RESPONSIVE - TABLETS PORTRAIT === */
 @media (max-width: 992px) {
   .hero-container {
     flex-direction: column;
     align-items: center;
     margin-top: 4rem;
+    gap: 2rem;
   }
   
   .texto-container {
     align-items: center;
+    text-align: center;
+    width: 100%;
   }
   
-  .nombre-solido,
-  .dev {
-    margin-left: 0;
-    text-align: center;
+  .nombre-outline-svg {
+    margin: 0 auto;
+  }
+  
+  .nombre-outline-svg text {
+    font-size: 110px;
+    letter-spacing: -5px;
   }
   
   .nombre-solido {
+    font-size: clamp(3rem, 12vw, 7rem);
     margin-top: -4rem;
+    margin-left: 0;
+  }
+  
+  .dev {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    margin-top: -3rem;
+    margin-left: 0;
+  }
+  
+  .redes-container {
+    margin-left: 0;
+    margin-top: 2rem;
+    justify-content: center;
   }
   
   .imagen {
-    height: 400px;
-    width: 400px;
-    margin-top: 2rem;
-  }
-  
-  .linea-scroll {
-    max-width: 90%;
+    height: 320px;
+    width: 320px;
   }
 }
 
-@media (max-width: 576px) {
+/* === RESPONSIVE - MÓVILES GRANDES === */
+@media (max-width: 768px) {
+  .hero-container {
+    padding: 0 1.5rem;
+  }
+  
   .nombre-outline-svg text {
-    font-size: 80px;
+    font-size: 90px;
+    stroke-width: 2;
   }
   
   .nombre-solido {
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 11vw, 5.5rem);
+    margin-top: -3rem;
   }
   
   .dev {
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    margin-top: -2.5rem;
+    letter-spacing: 1px;
   }
   
   .imagen {
-    height: 300px;
-    width: 300px;
+    height: 280px;
+    width: 280px;
+  }
+}
+
+/* === RESPONSIVE - MÓVILES MEDIANOS === */
+@media (max-width: 576px) {
+  .hero-container {
+    margin-top: 3rem;
+    padding: 0 1rem;
   }
   
-  .linea-superior,
-  .linea-scroll {
-    width: 150px;
-    max-width: 80%;
+  .nombre-outline-svg {
+    max-width: 100%;
+  }
+  
+  .nombre-outline-svg text {
+    font-size: 70px;
+    letter-spacing: -3px;
+  }
+  
+  .nombre-solido {
+    font-size: clamp(2rem, 10vw, 4rem);
+    margin-top: -2.5rem;
+  }
+  
+  .dev {
+    font-size: 0.9rem;
+    margin-top: -2rem;
+  }
+  
+  .redes-container {
+    margin-top: 1.5rem;
+    gap: 1rem;
+  }
+  
+  .redes-container a svg {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .imagen {
+    height: 250px;
+    width: 250px;
+    margin-top: 1rem;
+  }
+}
+
+/* === RESPONSIVE - MÓVILES PEQUEÑOS === */
+@media (max-width: 400px) {
+  .nombre-outline-svg text {
+    font-size: 60px;
+  }
+  
+  .nombre-solido {
+    font-size: 2.5rem;
+    margin-top: -2rem;
+  }
+  
+  .dev {
+    font-size: 0.8rem;
+    margin-top: -1.5rem;
+  }
+  
+  .imagen {
+    height: 220px;
+    width: 220px;
   }
 }
 </style>

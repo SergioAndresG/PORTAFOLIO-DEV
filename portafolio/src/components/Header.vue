@@ -1,24 +1,37 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 // Estado para controlar si el menú está abierto o cerrado
 const isMenuOpen = ref(false);
+
+// Estado para detectar el scroll
+const scroll = ref(false)
+
+const handleScroll = () => {
+  scroll.value = window.scrollY > 50 // Cuando el usuario baja mas de 50px
+}
 
 
 // Función para toggle (abrir/cerrar) el menú
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }
-
 // Función para cerrar el menú cuando se hace click en un link
 const closeMenu = () => {
   isMenuOpen.value = false
 }
+
+onMounted(() =>{
+  window.addEventListener('scroll', handleScroll)
+})
+onUnmounted(() =>{
+  window.addEventListener('scroll', handleScroll)
+})
 </script>
 
 <template>
-  <header>
-    <nav class="nav-container">
+  <header :class="{scroll: scroll}">
+    <nav class="nav-container" :class="{scroll:scroll}">
       <!-- Botón hamburguesa -->
       <button 
         class="hamburger-button"
@@ -65,21 +78,38 @@ const closeMenu = () => {
 header {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
   z-index: 9998;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
 }
-
+header.scroll {
+  width: min(700px, 90%);
+  height: 3rem;
+  border: solid 1px #efefef;
+  border-radius: 50px  50px  50px  50px;
+  transition: all 0.4s ease-in-out;
+  margin: 0.5rem auto;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.693);
+}
+header.scroll a {
+  font-size: 0.9rem;
+}
 .nav-container {
   justify-content: center;
   display: flex;
   align-items: center;
   max-width: 1200px;
-  margin: 15px auto;
+  margin: 0 auto;
+  margin-top: 0.5rem;
 }
-
+.nav-container.scroll{
+  margin-top: -8px;
+  transition: all 0.4s ease-in-out;
+}
 /* ========== BOTÓN HAMBURGUESA ========== */
 .hamburger-button {
   display: none; /* Oculto en desktop por defecto */

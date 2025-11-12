@@ -9,13 +9,14 @@ const scroll = ref(false)
 
 const handleScroll = () => {
   scroll.value = window.scrollY > 50 // Cuando el usuario baja mas de 50px
+  
 }
 
 const scrollTo = (id: string) => {
   const section = document.getElementById(id)
   if (section) {
     section.scrollIntoView({ behavior: 'smooth' })
-    isMenuOpen.value = false // cerrar menú si quieres
+    isMenuOpen.value = false // se cierra el Menú
   }
 }
 
@@ -61,10 +62,10 @@ onUnmounted(() =>{
           <a @click="scrollTo('about-me')">Sobre mí</a>
         </li>
         <li class="li-container">
-          <a @click="scrollTo('projects')">Proyectos</a>
+          <a @click="scrollTo('stack')">Stack</a>
         </li>
         <li class="li-container">
-          <a @click="scrollTo('contact-me')">Contacto</a>
+          <a @click="scrollTo('projects')">Proyectos</a>
         </li>
         <li class="li-container">
           <a @click="scrollTo('experience')">Experiencia</a>
@@ -73,8 +74,9 @@ onUnmounted(() =>{
           <a @click="scrollTo('achievements')">Logros</a>
         </li>
         <li class="li-container">
-          <a @click="scrollTo('stack')">Stack</a>
+          <a @click="scrollTo('contact-me')">Contacto</a>
         </li>
+
 
       </ul>
 

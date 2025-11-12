@@ -68,7 +68,7 @@ onUnmounted(() => {
 
 
 <template>
-  <section class="experience-section">
+  <section class="experience-section" id="experience">
     <!-- Línea divisora -->
     <div class="linea-container">
       <hr class="linea-scroll" :style="{ width: lineWidth + 'px' }">

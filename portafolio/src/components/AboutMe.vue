@@ -36,13 +36,13 @@
 </script>
 <template>
     <!-- Línea animada con scroll -->
-    <div class="linea-container">
+    <div class="linea-container"  id="about-me">
         <hr class="linea-scroll" :style="{ width: lineWidth + 'px' }">
     </div>
 
     <!-- Sección Sobre Mi -->
     <h2 class="about-me"><span class="enfasis-azul">Sobre Mí</span></h2>
-    <section class="about-me-container" :class="{ 'visible': aboutMeVisible }">
+    <section  class="about-me-container" :class="{ 'visible': aboutMeVisible }">
     <div class="about-content">
         <p>
             ¡Hola!, soy Sergio Andrés, Tecnólogo en Análisis y Desarrollo de Software.

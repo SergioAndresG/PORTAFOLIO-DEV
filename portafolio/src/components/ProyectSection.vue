@@ -118,7 +118,7 @@ const projects = ref([
 
 <template>
     <!-- Línea animada con scroll -->
-    <div class="linea-container">
+    <div class="linea-container" id="projects">
         <hr class="linea-scroll" :style="{ width: lineWidth + 'px' }">
     </div>
 

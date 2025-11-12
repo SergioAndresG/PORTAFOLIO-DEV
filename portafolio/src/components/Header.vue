@@ -11,6 +11,14 @@ const handleScroll = () => {
   scroll.value = window.scrollY > 50 // Cuando el usuario baja mas de 50px
 }
 
+const scrollTo = (id: string) => {
+  const section = document.getElementById(id)
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' })
+    isMenuOpen.value = false // cerrar menú si quieres
+  }
+}
+
 
 // Función para toggle (abrir/cerrar) el menú
 const toggleMenu = () => {
@@ -50,17 +58,24 @@ onUnmounted(() =>{
         :class="{ 'open': isMenuOpen }"
       >
         <li class="li-container">
-          <router-link @click="closeMenu">Sobre Mi</router-link>
+          <a @click="scrollTo('about-me')">Sobre mí</a>
         </li>
         <li class="li-container">
-          <router-link @click="closeMenu">Proyectos</router-link>
+          <a @click="scrollTo('projects')">Proyectos</a>
         </li>
         <li class="li-container">
-          <router-link @click="closeMenu">Contacto</router-link>
+          <a @click="scrollTo('contact-me')">Contacto</a>
         </li>
         <li class="li-container">
-          <router-link @click="closeMenu">Experiencias</router-link>
+          <a @click="scrollTo('experience')">Experiencia</a>
         </li>
+        <li class="li-container">
+          <a @click="scrollTo('achievements')">Logros</a>
+        </li>
+        <li class="li-container">
+          <a @click="scrollTo('stack')">Stack</a>
+        </li>
+
       </ul>
 
       <!-- Overlay oscuro cuando el menú está abierto -->
@@ -86,7 +101,7 @@ header {
   backdrop-filter: blur(10px);
 }
 header.scroll {
-  width: min(700px, 90%);
+  width: min(900px, 90%);
   height: 3rem;
   border: solid 1px #efefef;
   border-radius: 50px  50px  50px  50px;

@@ -47,7 +47,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <section class="contact-section">
+    <section class="contact-section" id="contact-me">
         <!--Linea divisora-->
         <div class="linea-container">
             <hr class="linea-scroll" :style="{ width:lineWidth + 'px'  }">

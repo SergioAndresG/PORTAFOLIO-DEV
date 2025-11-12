@@ -266,7 +266,6 @@ onUnmounted(() => {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 50%;
   width: 1.5px;
   background: linear-gradient(
     180deg,

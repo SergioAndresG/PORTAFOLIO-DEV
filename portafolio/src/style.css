@@ -1,8 +1,14 @@
 /* Estilos globales */
 body {
-    background-color: black;
+  background-color: black;
+  font-family: "Be Vietnam Pro", sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
 }
+
+.corben{
+  font-family: "Corben", serif;
+}
+

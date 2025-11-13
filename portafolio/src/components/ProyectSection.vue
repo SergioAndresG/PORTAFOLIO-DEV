@@ -85,7 +85,7 @@ const projectsIcons = ref({
 const projects = ref([
     {
         id: 1,
-        title: 'Automatización Masiva de Inscripciones',
+        title: 'Automatización Masiva de \nInscripciones',
         description: 'Bot de automatización de ingreso repetitivo de usuarios a la APE (Agencia Publica de Empleo), con interfaz de escritorio.',
         icon: "https://i.postimg.cc/8Cv9fJXG/atomatizacion.png",
         techs: ['iconPython', 'iconSelenium'],
@@ -105,7 +105,7 @@ const projects = ref([
     },
     {
       id: 3,
-      title: 'Coffe - Bike | Sistema POS para Cafetería',
+      title: 'Coffe - Bike \n Sistema POS para Cafetería',
       description: 'Aplicación full-stack para gestión de inventario, pedidos de los clientes y ventas',
       icon: 'https://i.postimg.cc/zvjWwxsB/Captura-de-pantalla-2025-10-30-171308.png',
       techs: ['iconPython', 'iconFatApi', 'iconVueJs', 'iconMySQL', 'iconDocker'],

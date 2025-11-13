@@ -65,8 +65,6 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 </script>
-
-
 <template>
   <section class="experience-section" id="experience">
     <!-- Línea divisora -->
@@ -159,6 +157,13 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+/* === RESET Y CONFIG GLOBAL === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/* === LÍNEAS === */
 .linea-superior {
   width: 200px;
   height: 2px;
@@ -182,13 +187,23 @@ onUnmounted(() => {
   border: none;
   transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   max-width: 880px;
+  width: 100%;
 }
-/* Efectos de fondo */
+
+/* === EFECTOS DE FONDO === */
+.experience-section {
+  position: relative;
+  padding: 5rem 0;
+  min-height: 100vh;
+  overflow: hidden; /* Prevenir overflow de blobs */
+}
+
 .background-effects {
   position: absolute;
   inset: 0;
   opacity: 0.2;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .blob {
@@ -198,17 +213,17 @@ onUnmounted(() => {
 }
 .blob-1 {
   top: 10rem;
-  left: 7rem;
-  width: 18rem;
-  height: 18rem;
+  left: -5rem; /* Ajustado para no desbordar */
+  width: min(18rem, 50vw); /* Responsive */
+  height: min(18rem, 50vw);
   background: #a855f7;
   animation: float 8s ease-in-out infinite;
 }
 .blob-2 {
   bottom: 5rem;
-  right: 2.5rem;
-  width: 24rem;
-  height: 24rem;
+  right: -5rem; /* Ajustado para no desbordar */
+  width: min(24rem, 60vw); /* Responsive */
+  height: min(24rem, 60vw);
   background: #3b82f6;
   animation: float 10s ease-in-out infinite reverse;
 }
@@ -216,18 +231,15 @@ onUnmounted(() => {
   0%, 100% { transform: translate(0, 0) scale(1); }
   50% { transform: translate(30px, -30px) scale(1.1); }
 }
-.experience-section {
-  position: relative;
-  padding: 5rem 0;
-  min-height: 100vh;
-}
+/* === CONTAINER === */
 .container {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 2rem;
   position: relative;
+  margin-left: 6px;
 }
-/* Header */
+/* === HEADER === */
 .header {
   text-align: center;
   margin-bottom: 5rem;
@@ -235,30 +247,28 @@ onUnmounted(() => {
   transform: translateY(-40px);
   transition: all 0.7s ease;
 }
+
 .header.visible {
   opacity: 1;
   transform: translateY(0);
 }
+
 .title {
-  font-size: 3rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
   color: white;
   margin-bottom: 1rem;
 }
+
 .subtitle {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
   color: #cbd5e1;
 }
-/* Timeline */
+/* === TIMELINE === */
 .timeline {
   position: relative;
   padding: 2rem 0;
-  transform: translateX(22%);
-}
-/* Timeline */
-.timeline {
-  position: relative;
-  padding: 2rem 0;
+  /* ELIMINAR transform: translateX(22%); que causa overflow */
 }
 /* Línea vertical central */
 .timeline::before {
@@ -266,6 +276,7 @@ onUnmounted(() => {
   position: absolute;
   top: 0;
   bottom: 0;
+  left: 50%; /* Centrado */
   width: 1.5px;
   background: linear-gradient(
     180deg,
@@ -276,16 +287,19 @@ onUnmounted(() => {
   );
   transform: translateX(-50%);
 }
-/* Item de timeline */
+/* === TIMELINE ITEMS === */
 .timeline-item {
   position: relative;
   margin-bottom: 4rem;
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 /* Punto en la línea */
 .timeline-dot {
   position: absolute;
   top: 30px;
+  left: 50%;
   width: 20px;
   height: 20px;
   background: linear-gradient(135deg, #44a2ff, #7d4af5);
@@ -296,6 +310,7 @@ onUnmounted(() => {
   box-shadow: 0 0 0 4px rgba(68, 162, 255, 0.2);
   animation: pulse 2s infinite;
 }
+
 @keyframes pulse {
   0%, 100% {
     box-shadow: 0 0 0 4px rgba(68, 162, 255, 0.2);
@@ -304,22 +319,25 @@ onUnmounted(() => {
     box-shadow: 0 0 0 8px rgba(68, 162, 255, 0.1);
   }
 }
-/* Contenido del timeline */
+/* === CONTENIDO DEL TIMELINE === */
 .timeline-content {
-  width: 50%;
+  width: 45%; /* Reducido para evitar overflow */
   position: relative;
 }
+
 /* Items a la izquierda */
 .timeline-item.left .timeline-content {
-  margin-left: 0;
+  margin-right: 55%;
   text-align: right;
 }
+
 /* Items a la derecha */
 .timeline-item.right .timeline-content {
-  margin-left: 6.5%;
+  margin-left: 55%;
   text-align: left;
 }
-/* Fecha */
+
+/* === FECHA === */
 .timeline-date {
   display: inline-block;
   padding: 0.5rem 1rem;
@@ -331,7 +349,8 @@ onUnmounted(() => {
   font-weight: 600;
   margin-bottom: 1rem;
 }
-/* Card de experiencia */
+
+/* === CARD DE EXPERIENCIA === */
 .experience-card {
   background: rgba(30, 41, 59, 0.5);
   backdrop-filter: blur(10px);
@@ -359,7 +378,8 @@ onUnmounted(() => {
 .experience-card:hover::before {
   opacity: 1;
 }
-/* Logo de empresa (opcional) */
+
+/* === LOGO DE EMPRESA === */
 .company-logo {
   width: 60px;
   height: 60px;
@@ -371,38 +391,38 @@ onUnmounted(() => {
   justify-content: center;
   margin-bottom: 1rem;
 }
+
 .company-logo img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
-/* Título del puesto */
+
+/* === TEXTOS === */
 .job-title {
-  font-size: 1.5rem;
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
   font-weight: 700;
   color: #44a2ff;
   margin-bottom: 1rem;
-
 }
-/* Info de la empresa */
+
 .company-info {
-  justify-content: flex-end;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   color: #cbd5e1;
   font-size: 0.9375rem;
-  margin-bottom: 2rem;
 }
+
 .company-name,
 .location {
   display: flex;
   align-items: center;
   gap: 0.375rem;
-
 }
-/* Tipo de empleo */
+
+/* === JOB TYPE === */
 .job-type {
   display: inline-block;
   padding: 0.375rem 0.875rem;
@@ -412,18 +432,20 @@ onUnmounted(() => {
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
+
 .job-type.project {
   background: rgba(59, 130, 246, 0.1);
   border: 1px solid rgba(59, 130, 246, 0.3);
   color: #3b82f6;
 }
-/* Descripción */
+
+/* === DESCRIPCIÓN Y LOGROS === */
 .job-description {
   color: #cbd5e1;
   line-height: 1.7;
   margin-bottom: 1rem;
 }
-/* Logros */
+
 .achievements {
   list-style: none;
   padding: 0;
@@ -437,6 +459,7 @@ onUnmounted(() => {
   position: relative;
   line-height: 1.6;
 }
+
 .achievements li::before {
   content: '✓';
   position: absolute;
@@ -444,7 +467,8 @@ onUnmounted(() => {
   color: #4ade80;
   font-weight: bold;
 }
-/* Tech stack */
+
+/* === TECH STACK === */
 .tech-stack {
   display: flex;
   flex-wrap: wrap;
@@ -470,29 +494,67 @@ onUnmounted(() => {
   transform: translateY(-2px);
 }
 
-/* Responsive */
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
   .timeline::before {
-    left: 20px;
+    left: 10px;
   }
 
   .timeline-dot {
-    left: 20px;
+    left: 10px;
+  }
+
+  .timeline-item {
+    justify-content: flex-start;
   }
 
   .timeline-item.left .timeline-content,
   .timeline-item.right .timeline-content {
     width: calc(100% - 60px);
-    margin-left: 60px;
+    margin-left: 40px;
+    margin-right: 0;
     text-align: left;
+  }
+
+  .company-info {
+    justify-content: flex-start;
+  }
+
+  .blob-1, .blob-2 {
+    width: 10rem;
+    height: 10rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .experience-section {
+    padding: 3rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .header {
+    margin-bottom: 3rem;
   }
 
   .timeline-date {
     font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+  }
+
+  .experience-card {
+    padding: 1.25rem;
   }
 
   .job-title {
     font-size: 1.25rem;
+  }
+
+  .tech-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
   }
 }
 </style>

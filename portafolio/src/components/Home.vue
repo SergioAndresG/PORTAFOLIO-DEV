@@ -1,4 +1,6 @@
   <template>
+
+
   <!-- Línea divisora superior -->
   <hr class="linea-superior">
 
@@ -7,12 +9,12 @@
     <!-- Contenedor para el texto -->
     <div class="texto-container">
       <svg class="nombre-outline-svg" viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg">
-        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle">
+        <text x="50%" y="50%" text-anchor="middle" class="corben" dominant-baseline="middle">
           SERGIO
         </text>
       </svg>
       
-      <h2 class="nombre-solido">GARCIA</h2>
+      <h2 class="nombre-solido corben" >GARCIA</h2>
       <p class="dev">Desarrollador de Software</p>
       <div class="redes-container">
         <a href="https://www.linkedin.com/in/sergio-garcia-232b86335/">
@@ -34,6 +36,7 @@
 
 
 <style scoped>
+
 /* === HERO SECTION === */
 .hero-container {
   display: flex;
@@ -86,12 +89,12 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: 1px;
-  margin-top: -6rem;
+  margin-top: -8.5rem;
   margin-left: 3rem;
   user-select: none;
   opacity: 0;
   transform: translateX(100px);
-  font-weight: 900;
+  font-weight: bolder;
   animation: aparecer-solido 1.8s 1.8s ease-out forwards;
 }
 
@@ -101,7 +104,7 @@
   color: #44a2ff;
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-top: -6rem;
+  margin-top: -7rem;
   margin-left: 8.5rem;
   user-select: none;
   opacity: 0;
@@ -123,7 +126,7 @@
 .redes-container {
   display: flex;
   gap: 1.5rem;
-  margin-left: 15rem;
+  margin-left: 18rem;
   padding: 1rem;
   margin-top: 1rem;
 }
@@ -172,16 +175,17 @@
   flex-shrink: 0;
   position: relative;
   opacity: 0;
-  transform: translateY(40px);
   animation: aparecer-imagen 1.5s 2.5s ease-out forwards;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 55px;
+  margin-top: -1rem;
 }
 
 .imagen {
-  height: 390px;
-  width: 390px;
+  height: 400px;
+  width: 400px;
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid #616161;

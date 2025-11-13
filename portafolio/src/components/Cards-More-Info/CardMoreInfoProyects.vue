@@ -185,7 +185,7 @@ const cerrarModal = () => {
 .button-icon {
   display: flex;
   border: 3px #fff solid;
-  width: fit-content;
+  width: 265px;
   height: fit-content;
   cursor: pointer;
   padding: 3px;
@@ -240,6 +240,20 @@ const cerrarModal = () => {
   background: #222229;
   color: #fff;
   transform: translate3d(0, 0, 1em);
+}
+@media (max-width: 768px) {
+  .cube {
+    width: min(180px, calc(100% - 50px));
+  }
+  
+  .side {
+    font-size: 0.7em;
+  }
+  
+  .modal-content {
+    margin: 1rem;
+    max-width: calc(100% - 2rem);
+  }
 }
 
 </style>

@@ -9,7 +9,6 @@ const scroll = ref(false)
 
 const handleScroll = () => {
   scroll.value = window.scrollY > 50 // Cuando el usuario baja mas de 50px
-  
 }
 
 const scrollTo = (id: string) => {
@@ -20,39 +19,40 @@ const scrollTo = (id: string) => {
   }
 }
 
-
 // Función para toggle (abrir/cerrar) el menú
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }
+
 // Función para cerrar el menú cuando se hace click en un link
 const closeMenu = () => {
   isMenuOpen.value = false
 }
 
-onMounted(() =>{
+onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
-onUnmounted(() =>{
-  window.addEventListener('scroll', handleScroll)
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll) // Aquí estaba mal, debería ser removeEventListener
 })
 </script>
 
 <template>
   <header :class="{scroll: scroll}">
-    <nav class="nav-container" :class="{scroll:scroll}">
-      <!-- Botón hamburguesa -->
-      <button 
-        class="hamburger-button"
-        :class="{ 'active': isMenuOpen }"
-        @click="toggleMenu"
-        aria-label="Menu"
-      >
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line"></span>
-      </button>
+    <!-- Botón hamburguesa -->
+    <button 
+      class="hamburger-button"
+      :class="{ 'active': isMenuOpen, 'scroll': scroll }"
+      @click="toggleMenu"
+      aria-label="Menu"
+    >
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </button>
 
+    <nav class="nav-container" :class="{scroll:scroll}">
       <!-- Menú (se muestra/oculta con la clase 'open') -->
       <ul 
         class="ul-container"
@@ -76,8 +76,6 @@ onUnmounted(() =>{
         <li class="li-container">
           <a @click="scrollTo('contact-me')">Contacto</a>
         </li>
-
-
       </ul>
 
       <!-- Overlay oscuro cuando el menú está abierto -->
@@ -91,7 +89,6 @@ onUnmounted(() =>{
 </template>
 
 <style scoped>
-
 header {
   position: fixed;
   top: 0;
@@ -101,20 +98,23 @@ header {
   z-index: 9998;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
+  transition: all 0.4s ease-in-out;
 }
+
 header.scroll {
   width: min(900px, 90%);
   height: 3rem;
   border: solid 1px #efefef;
-  border-radius: 50px  50px  50px  50px;
-  transition: all 0.4s ease-in-out;
+  border-radius: 50px;
   margin: 0.5rem auto;
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
   background: rgba(0, 0, 0, 0.693);
 }
+
 header.scroll a {
   font-size: 0.9rem;
 }
+
 .nav-container {
   justify-content: center;
   display: flex;
@@ -123,10 +123,12 @@ header.scroll a {
   margin: 0 auto;
   margin-top: 0.5rem;
 }
-.nav-container.scroll{
+
+.nav-container.scroll {
   margin-top: -8px;
   transition: all 0.4s ease-in-out;
 }
+
 /* ========== BOTÓN HAMBURGUESA ========== */
 .hamburger-button {
   display: none; /* Oculto en desktop por defecto */
@@ -139,7 +141,16 @@ header.scroll a {
   cursor: pointer;
   padding: 0;
   z-index: 10000;
-  position: relative;
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  transition: all 0.3s ease;
+}
+
+/* Ajuste del botón cuando hay scroll en móviles */
+.hamburger-button.scroll {
+  top: 15px;
+  left: 20px;
 }
 
 /* Las 3 líneas del hamburguesa */
@@ -164,8 +175,7 @@ header.scroll a {
 
 .hamburger-button.active .line:nth-child(3) {
   transform: rotate(-45deg) translate(4px, -8px);
-  background:  #1E90FF;
-;
+  background: #1E90FF;
 }
 
 /* Hover del botón */
@@ -182,20 +192,24 @@ header.scroll a {
   list-style: none;
   transition: all 0.3s ease;
 }
+
 .li-container {
   list-style: none;
   display: inline-block;
   margin: 0 15px;
 }
+
 .li-container::after {
   content: "/";
   color: rgb(255, 255, 255);
   position: relative;
   left: 15px;
 }
+
 .li-container:last-child::after {
   content: "";
 }
+
 a {
   text-decoration: none;
   color: rgb(129, 129, 129);
@@ -203,11 +217,14 @@ a {
   transition: all 0.2s ease-in-out;
   font-size: 16px;
   padding: 20px;
+  cursor: pointer;
 }
+
 a:hover {
   color: #1E90FF;
   transform: translateY(-5px);
 }
+
 /* Overlay oscuro */
 .overlay {
   position: fixed;
@@ -221,16 +238,51 @@ a:hover {
   transition: all 0.3s ease;
   z-index: 9997;
 }
+
 .overlay.show {
   opacity: 1;
   visibility: visible;
 }
 
 /* ========== RESPONSIVE ========== */
-@media (max-width: 768px) {
+@media (max-width: 768px) { 
+  /* Header en móviles */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: none;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    height: 60px;
+    border-radius: 0;
+  }
+
+  header.scroll {
+    width: 100%;
+    height: 60px;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.95);
+  }
+
   /* Mostrar el botón hamburguesa en móviles */
   .hamburger-button {
     display: flex;
+  }
+
+  /* Ajustar nav container en móvil */
+  .nav-container {
+    margin-top: 0;
+    height: 100%;
+    align-items: center;
+  }
+
+  .nav-container.scroll {
+    margin-top: 0;
   }
 
   /* El menú se convierte en un panel lateral */
@@ -285,6 +337,12 @@ a:hover {
   .ul-container.open .li-container:nth-child(4) {
     transition-delay: 0.4s;
   }
+  .ul-container.open .li-container:nth-child(5) {
+    transition-delay: 0.5s;
+  }
+  .ul-container.open .li-container:nth-child(6) {
+    transition-delay: 0.6s;
+  }
 
   /* Quitamos el "/" en móvil */
   .li-container::after {
@@ -296,6 +354,18 @@ a:hover {
     font-size: 20px;
     display: block;
     padding: 10px 0;
+  }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .hamburger-button {
+    top: 18px;
+    right: 15px;
+  }
+  
+  .ul-container {
+    width: 80%;
   }
 }
 </style>

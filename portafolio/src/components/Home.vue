@@ -1,8 +1,6 @@
   <template>
 
 
-  <!-- Línea divisora superior -->
-  <hr class="linea-superior">
 
   <!-- Hero Section -->
   <div class="hero-container">
@@ -36,6 +34,12 @@
 
 
 <style scoped>
+/* === RESET Y CONFIGURACIÓN GLOBAL === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 /* === HERO SECTION === */
 .hero-container {
@@ -49,6 +53,7 @@
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
+  overflow: hidden; /* Previene overflow */
 }
 
 .texto-container {
@@ -179,13 +184,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 55px;
-  margin-top: -1rem;
+  /* ELIMINAR márgenes problemáticos */
+  /* margin-right: 55px; */
+  /* margin-top: -1rem; */
 }
 
 .imagen {
   height: 400px;
   width: 400px;
+  max-width: 100%; /* IMPORTANTE: limitar ancho */
   object-fit: cover;
   border-radius: 50%;
   border: 2px solid #616161;
@@ -303,8 +310,8 @@
     flex-direction: column;
     align-items: center;
     margin-top: 4rem;
-    gap: 2rem;
-  }
+    gap: 3rem;
+    }
   
   .texto-container {
     align-items: center;
@@ -339,6 +346,10 @@
     justify-content: center;
   }
   
+  .imagen-container {
+    margin-right: 0; /* Eliminar margen en móviles */
+  }
+  
   .imagen {
     height: 320px;
     width: 320px;
@@ -352,7 +363,7 @@
   }
   
   .nombre-outline-svg text {
-    font-size: 90px;
+    font-size: 80px;
     stroke-width: 2;
   }
   

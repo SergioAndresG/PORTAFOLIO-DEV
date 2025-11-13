@@ -35,14 +35,14 @@
     })
 </script>
 <template>
-    <!-- Línea animada con scroll -->
+
+    <section  class="about-me-container" :class="{ 'visible': aboutMeVisible }">
+          <!-- Línea animada con scroll -->
     <div class="linea-container"  id="about-me">
         <hr class="linea-scroll" :style="{ width: lineWidth + 'px' }">
     </div>
-
     <!-- Sección Sobre Mi -->
     <h2 class="about-me"><span class="enfasis-azul">Sobre Mí</span></h2>
-    <section  class="about-me-container" :class="{ 'visible': aboutMeVisible }">
     <div class="about-content">
         <p>
             ¡Hola!, soy Sergio Andrés, Tecnólogo en Análisis y Desarrollo de Software.
@@ -87,12 +87,8 @@
 }
 /* === SECCIÓN SOBRE MÍ === */
 .about-me-container {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
   text-align: left;
   opacity: 0;
-  transform: translateY(50px);
   transition: opacity 1s ease, transform 1s ease;
 }
 
@@ -107,6 +103,8 @@
   font-weight: 900;
   letter-spacing: 1px;
   text-align: center;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .about-content {
@@ -128,5 +126,12 @@
 
 .about-content p {
   margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .about-me-container{
+    max-width: 100%;
+    padding: 0 1rem;
+  }
 }
 </style>

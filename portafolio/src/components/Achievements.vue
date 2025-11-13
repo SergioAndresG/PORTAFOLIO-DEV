@@ -154,44 +154,70 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-.linea-container{
-    display: flex;
-    justify-content: center;
-    padding: 0 2rem;
+/* === RESET Y CONFIG GLOBAL === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-.linea-scroll{
-    height: 2px;
-    background: linear-gradient(90deg, 
+
+/* === SECCIÓN PRINCIPAL === */
+.achievements-section {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 1rem;
+  overflow: hidden;
+}
+
+/* === LÍNEA DIVISORA === */
+.linea-container {
+  display: flex;
+  justify-content: center;
+  padding: 0 2rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.linea-scroll {
+  height: 2px;
+  background: linear-gradient(90deg, 
     rgba(154, 154, 154, 0.2) 0%, 
     rgba(240, 248, 255, 0.6) 50%, 
     rgba(154, 154, 154, 0.2) 100%
-    );
-    border: none;
-    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    max-width: 880px;
+  );
+  border: none;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: 880px;
+  width: 100%;
 }
+
+/* Header */
 .header {
   text-align: center;
   margin-bottom: -2.8rem;
   opacity: 0;
   transform: translateY(-40px);
   transition: all 0.7s ease;
-
 }
+
 .header.visible {
   opacity: 1;
   transform: translateY(0);
 }
+
 .title {
-  font-size: 3rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
   color: white;
   margin-bottom: 0.5rem;
 }
+
 .subtitle {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
   color: #cbd5e1;
 }
+
+/* === TROPHY CONTAINER === */
 .container-trophy {
   width: 50px;
   display: flex;
@@ -205,29 +231,38 @@ onUnmounted(() => {
   transition: all 1s ease;
   text-align: center;
   top: 0.5rem;
+  overflow: hidden; /* Contener animaciones */
 }
+
 .container__star {
   transition: all .7s ease-in-out;
 }
+
 .first {
   position: absolute;
   top: 20px;
-  left: 50px;
+  left: 0; /* Ajustado para no desbordar */
+  right: 0;
+  margin: 0 auto;
+  width: fit-content;
   transition: all .7s ease-in-out;
 }
+
 .svg-icon {
   position: absolute;
   fill: #e94822;
   z-index: 1;
 }
+
 .star-eight {
   background: #efd510;
   width: 50px;
   height: 50px;
   position: relative;
   text-align: center;
-  animation: rot 3s  infinite;
+  animation: rot 3s infinite;
 }
+
 .star-eight::before {
   content: '';
   position: absolute;
@@ -238,27 +273,31 @@ onUnmounted(() => {
   background: #efd510;
   transform: rotate(135deg);
 }
+
 .container-trophy:hover .container__star {
   transform: rotateX(70deg) translateY(50px);
   box-shadow: 0px 0px 120px -100px #e4e727;
 }
+
 .container-trophy:hover .svg-icon {
   animation: grow 1s linear infinite;
 }
 
-/* Card principal */
+/* === CARD PRINCIPAL === */
 .achievement-card {
   position: relative;
   max-width: 650px;
+  width: 100%;
   margin: 0 auto;
   background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
   backdrop-filter: blur(10px);
   border: 2px solid #475569;
   border-radius: 1.5rem;
-  padding: 2.5rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
   overflow: hidden;
   transition: all 0.4s ease;
 }
+
 .achievement-card::before {
   content: '';
   position: absolute;
@@ -267,72 +306,79 @@ onUnmounted(() => {
   opacity: 0;
   transition: opacity 0.4s ease;
 }
+
 .achievement-card:hover {
   border-color: #64748b;
   transform: translateY(-8px);
   box-shadow: 0 25px 50px -12px rgba(68, 162, 255, 0.3);
 }
+
 .achievement-card:hover::before {
   opacity: 1;
 }
-/* Header de la card */
+
+/* === HEADER DE LA CARD === */
 .achievement-header {
   display: flex;
   align-items: center;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
+  flex-wrap: wrap;
 }
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
+
 .header-content {
   flex: 1;
+  min-width: 0; /* Importante para text overflow */
 }
+
 .achievement-title {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 700;
   color: white;
   margin-bottom: 0.5rem;
   background: linear-gradient(90deg, #fff, #60a5fa);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  word-wrap: break-word;
 }
+
 .achievement-meta {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
 }
+
 .meta-tag {
   padding: 0.375rem 0.875rem;
   border-radius: 0.375rem;
-  font-size: 0.8125rem;
+  font-size: clamp(0.75rem, 1.5vw, 0.8125rem);
   font-weight: 600;
   display: flex;
   align-items: center;
   gap: 0.375rem;
 }
+
 .meta-tag.category {
   background: rgba(168, 85, 247, 0.1);
   border: 1px solid rgba(168, 85, 247, 0.3);
   color: #a855f7;
 }
 
-/* Descripción */
+/* === DESCRIPCIÓN === */
 .achievement-description {
   color: #cbd5e1;
   line-height: 1.7;
-  font-size: 1rem;
+  font-size: clamp(0.875rem, 2vw, 1rem);
   margin-bottom: 2rem;
 }
 
-/* Stats */
+/* === STATS === */
 .achievement-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1.5rem;
   margin-bottom: 2rem;
-  padding: 1.5rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
   background: rgba(255, 255, 255, 0.02);
   border-radius: 0.75rem;
   border: 1px solid rgba(71, 85, 105, 0.3);
@@ -343,7 +389,7 @@ onUnmounted(() => {
 }
 
 .stat-number {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 2.5rem);
   font-weight: 700;
   background: linear-gradient(135deg, #44a2ff, #7d4af5);
   -webkit-background-clip: text;
@@ -352,17 +398,17 @@ onUnmounted(() => {
 }
 
 .stat-label {
-  font-size: 0.875rem;
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
   color: #94a3b8;
 }
 
-/* Learnings */
+/* === LEARNINGS === */
 .learnings {
   margin-bottom: 1.5rem;
 }
 
 .learnings-title {
-  font-size: 1.125rem;
+  font-size: clamp(1rem, 2vw, 1.125rem);
   font-weight: 600;
   color: #60a5fa;
   margin-bottom: 1rem;
@@ -397,7 +443,7 @@ onUnmounted(() => {
   font-size: 0.75rem;
 }
 
-/* Tech stack */
+/* === TECH STACK === */
 .tech-stack {
   display: flex;
   flex-wrap: wrap;
@@ -408,12 +454,12 @@ onUnmounted(() => {
 }
 
 .tech-badge {
-  padding: 0.5rem 1rem;
+  padding: clamp(0.375rem, 1vw, 0.5rem) clamp(0.75rem, 2vw, 1rem);
   background: rgba(68, 162, 255, 0.1);
   border: 1px solid rgba(68, 162, 255, 0.3);
   border-radius: 0.5rem;
   color: #60a5fa;
-  font-size: 0.875rem;
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
   font-weight: 500;
   transition: all 0.3s ease;
 }
@@ -424,13 +470,14 @@ onUnmounted(() => {
   box-shadow: 0 4px 12px rgba(68, 162, 255, 0.3);
 }
 
-/* Footer */
+/* === FOOTER === */
 .achievement-footer {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding-top: 1rem;
   border-top: 1px solid rgba(71, 85, 105, 0.3);
+  flex-wrap: wrap;
 }
 
 .location {
@@ -438,40 +485,49 @@ onUnmounted(() => {
   align-items: center;
   gap: 0.5rem;
   color: #94a3b8;
-  font-size: 0.9375rem;
+  font-size: clamp(0.875rem, 1.5vw, 0.9375rem);
 }
+
+/* === ANIMACIONES === */
 @keyframes rot {
   0% {
     transform: rotate(0deg);
   }
-
   50% {
     transform: rotate(340deg);
   }
-
   100% {
     transform: rotate(0deg);
   }
 }
+
 @keyframes grow {
   0% {
     transform: rotate(0deg);
   }
-
   25% {
     transform: rotate(-5deg);
   }
-
   75% {
     transform: rotate(5deg);
   }
-
   100% {
     transform: scale(1) rotate(0deg);
   }
 }
-/* Responsive */
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
+  .achievements-section {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
   .achievement-card {
     padding: 1.5rem;
   }
@@ -481,19 +537,40 @@ onUnmounted(() => {
     text-align: center;
   }
 
-  .achievement-title {
-    font-size: 1.5rem;
-  }
-
   .achievement-stats {
     grid-template-columns: 1fr;
     gap: 1rem;
+    padding: 1rem;
   }
 
   .floating-badge {
     position: static;
     margin: 0 auto 1.5rem;
     width: fit-content;
+  }
+}
+
+@media (max-width: 480px) {
+  .achievements-section {
+    padding: 0 0.75rem;
+  }
+
+  .achievement-card {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .tech-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .stat-number {
+    font-size: 1.75rem;
+  }
+
+  .learnings-list li {
+    font-size: 0.875rem;
   }
 }
 </style>

@@ -177,14 +177,12 @@ const projects = ref([
   margin: 17px auto 0 2rem;
   transition: width 0.3s ease;
 }
-
 .linea-container {
   display: flex;
   justify-content: center;
   margin-top: 5rem;
   padding: 0 2rem;
 }
-
 .linea-scroll {
   height: 2px;
   background: linear-gradient(90deg, 
@@ -196,7 +194,6 @@ const projects = ref([
   transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   max-width: 880px;
 }
-
 /* Header */
 .header {
   text-align: center;
@@ -205,23 +202,23 @@ const projects = ref([
   transform: translateY(-40px);
   transition: all 0.7s ease;
 }
-
 .header.visible {
   opacity: 1;
   transform: translateY(0);
 }
-
 .title {
-  font-size: 3rem;
+  font-size: clamp(2rem, 5vw, 3em);
   font-weight: 700;
   color: white;
   margin-bottom: 1rem;
 }
-
 .subtitle {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
   color: #cbd5e1;
   transition-delay: 150ms;
+}
+.project-section{
+  overflow: hidden;
 }
 .project-grid {
   display: grid;

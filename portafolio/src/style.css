@@ -12,3 +12,6 @@ html {
   font-family: "Corben", serif;
 }
 
+section {
+  scroll-margin-top: 90px;
+}

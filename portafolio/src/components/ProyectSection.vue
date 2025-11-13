@@ -117,12 +117,13 @@ const projects = ref([
 </script>
 
 <template>
-    <!-- Línea animada con scroll -->
-    <div class="linea-container" id="projects">
-        <hr class="linea-scroll" :style="{ width: lineWidth + 'px' }">
-    </div>
 
-    <section class="project-section" :class="{'visible': ProjectVisible}"> 
+
+    <section class="project-section" :class="{'visible': ProjectVisible}" id="projects"> 
+        <!-- Línea animada con scroll -->
+        <div class="linea-container" >
+            <hr class="linea-scroll" :style="{ width: lineWidth + 'px' }">
+        </div>
         <!-- Header principal -->
         <div class="header" :class="{ visible }">
             <h2 class="title">Proyectos</h2>

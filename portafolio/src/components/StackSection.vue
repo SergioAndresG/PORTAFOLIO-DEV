@@ -138,12 +138,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- Línea animada con scroll -->
-  <div class="linea-container" id="stack">
-    <hr class="linea-scroll" :style="{ width: lineWidth + 'px' }">
-  </div>
 
-  <section class="tech-stack-section" :class="{'visible': StackVisible}">
+
+  <section class="tech-stack-section" id="stack" :class="{'visible': StackVisible}">
+    <!-- Línea animada con scroll -->
+    <div class="linea-container" >
+      <hr class="linea-scroll" :style="{ width: lineWidth + 'px' }">
+    </div>
     <!-- Efectos de fondo -->
     <div class="background-effects">
       <div class="blob blob-1"></div>

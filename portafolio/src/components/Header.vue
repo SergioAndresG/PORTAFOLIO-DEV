@@ -147,12 +147,6 @@ header.scroll a {
   transition: all 0.3s ease;
 }
 
-/* Ajuste del botón cuando hay scroll en móviles */
-.hamburger-button.scroll {
-  top: 15px;
-  left: 20px;
-}
-
 /* Las 3 líneas del hamburguesa */
 .line {
   width: 100%;
@@ -272,6 +266,7 @@ a:hover {
   /* Mostrar el botón hamburguesa en móviles */
   .hamburger-button {
     display: flex;
+    right: 20px;
   }
 
   /* Ajustar nav container en móvil */

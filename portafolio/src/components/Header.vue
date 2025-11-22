@@ -157,7 +157,7 @@ header.scroll a {
 .line {
   width: 100%;
   height: 3px;
-  background: rgb(129, 129, 129);
+  background: rgb(255, 255, 255) !important;
   border-radius: 10px;
   transition: all 0.3s ease;
 }
@@ -165,7 +165,7 @@ header.scroll a {
 /* Animación cuando está activo (X) */
 .hamburger-button.active .line:nth-child(1) {
   transform: rotate(45deg) translate(4px, 8px);
-  background: #1E90FF;
+  background: #1E90FF !important;
 }
 
 .hamburger-button.active .line:nth-child(2) {
@@ -175,12 +175,12 @@ header.scroll a {
 
 .hamburger-button.active .line:nth-child(3) {
   transform: rotate(-45deg) translate(4px, -8px);
-  background: #1E90FF;
+  background: #1E90FF !important;
 }
 
 /* Hover del botón */
 .hamburger-button:hover .line {
-  background: #1E90FF;
+  background: #1E90FF !important;
 }
 
 /* ========== MENÚ ========== */
@@ -212,7 +212,7 @@ header.scroll a {
 
 a {
   text-decoration: none;
-  color: rgb(129, 129, 129);
+  color: rgb(129, 129, 129) !important;
   display: inline-block;
   transition: all 0.2s ease-in-out;
   font-size: 16px;
@@ -221,7 +221,7 @@ a {
 }
 
 a:hover {
-  color: #1E90FF;
+  color: #1E90FF !important;
   transform: translateY(-5px);
 }
 

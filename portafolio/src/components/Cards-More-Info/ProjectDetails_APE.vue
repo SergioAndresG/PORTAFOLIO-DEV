@@ -64,10 +64,12 @@ const props = defineProps<{
                         ></path>
                         </svg>
                     </div>
+                    <a href="https://github.com/SergioAndresG/inscritos_sena_ape" class="cube-link">
                     <div class="cube">
                         <span class="side front">Ver código en GitHub</span>
-                        <span class="side top"><a href="https://github.com/SergioAndresG/inscritos_sena_ape" style="text-decoration: none; color: aliceblue;">¡Vamos!</a></span>
+                        <span class="side top">¡Vamos!</span>
                     </div>
+                    </a>
                 </div>
             </div>
             

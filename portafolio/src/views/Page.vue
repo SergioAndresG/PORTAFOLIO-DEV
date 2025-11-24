@@ -2,7 +2,7 @@
 import Header from '../components/Header.vue'
 import AboutMe from '../components/AboutMe.vue'
 import StackSection from '../components/StackSection.vue'
-import ProyectsSection from '../components/ProyectSection.vue'
+import ProjectsSection from '../components/ProjectSection.vue'
 import WorkExperience from '../components/WorkExperience.vue'
 import Achievements from '../components/Achievements.vue'
 import ContactMe from '../components/ContactMe.vue'
@@ -14,7 +14,7 @@ import Home from '../components/Home.vue'
   <Home />
   <AboutMe  id="about-me" />
   <StackSection id="stack"/>
-  <ProyectsSection id="projects"/>
+  <ProjectsSection id="projects"/>
   <WorkExperience id="experience"/> 
   <Achievements id="achievements"/>
   <ContactMe id="contact-me"/>

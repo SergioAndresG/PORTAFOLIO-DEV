@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import ProjectDetails_165 from './ProjectDetails_165.vue';
 import ProjectDetails_APE from './ProjectDetails_APE.vue';
 import ProjectDetails_CoffeBike from './ProjectDetails_CoffeBike.vue';
+import ProjectDetails_APE_Empresas from './ProjectDetails_APE_Empresas.vue';
 
 const props = defineProps<{
     show: boolean; 
@@ -24,7 +25,8 @@ const emit = defineEmits(['close']);
 const componentMap = {
     1: ProjectDetails_APE,  // Automatización APE
     2: ProjectDetails_165,  // Gestor F-165
-    3: ProjectDetails_CoffeBike // CoffeBike
+    3: ProjectDetails_CoffeBike, // CoffeBike
+    4: ProjectDetails_APE_Empresas // Automatización APE empresas
 };
 
 // Componente dinámico basado en el ID

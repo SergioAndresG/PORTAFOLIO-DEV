@@ -61,7 +61,7 @@
           <p>
               Me gusta trabajar en equipo, conocer a las 
               personas detrás de cada proyecto y aprender de ellas,
-              creo que las mejores soluciones nacen del entendimiento y las ideas compartida.
+              creo que las mejores soluciones nacen del entendimiento y las ideas compartidas.
           </p>
       </div>
   </section>

@@ -106,11 +106,21 @@ const projects = ref([
     {
       id: 3,
       title: 'Coffe - Bike \n Sistema POS para Cafetería',
-      description: 'Aplicación full-stack para gestión de inventario, pedidos de los clientes y ventas',
+      description: 'Aplicación full-stack para gestión de inventario, pedidos de los clientes y ventas.',
       icon: 'https://i.postimg.cc/zvjWwxsB/Captura-de-pantalla-2025-10-30-171308.png',
       techs: ['iconPython', 'iconFatApi', 'iconVueJs', 'iconMySQL', 'iconDocker'],
       color: '#68a063',
       category: 'Full Stack',
+      github: 'primeroorganizo el readme.com'
+    },
+    {
+      id: 4,
+      title: 'Automatización \nConsultas de empresas',
+      description: 'Automatización que obtiene información basica de las empresas registradas en la APE.',
+      icon: 'https://i.postimg.cc/NF29zFCJ/Captura-de-pantalla-2025-11-29-233701.png',
+      techs: ['iconPython', 'iconSelenium'],
+      color: '#68a063',
+      category: 'Backend',
       github: 'primeroorganizo el readme.com'
     }
 ]);
@@ -230,7 +240,7 @@ const projects = ref([
   transition: border-color 0.3s ease;
 }
 .container {
-  max-width: 1280px;
+  max-width: 1170px;
   margin: 0 auto;
   padding: 0 1.4rem;
   position: relative;
@@ -314,7 +324,7 @@ const projects = ref([
   filter: brightness(1.05) contrast(1.1);
 }
 .project-card:hover .card-overlay {
-    opacity: 1;
+  opacity: 1;
   pointer-events: auto;
 }
 .project-card:hover .project-icon::after {

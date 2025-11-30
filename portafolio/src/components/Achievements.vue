@@ -231,7 +231,6 @@ onUnmounted(() => {
   transition: all 1s ease;
   text-align: center;
   top: 0.5rem;
-  overflow: hidden; /* Contener animaciones */
 }
 
 .container__star {

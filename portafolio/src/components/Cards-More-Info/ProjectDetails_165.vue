@@ -67,10 +67,12 @@ const props = defineProps<{
                         ></path>
                         </svg>
                     </div>
-                    <div class="cube">
-                        <span class="side front">Ver código en GitHub</span>
-                        <span class="side top"><a href="https://github.com/SergioAndresG/sena-app-fullstack" style="text-decoration: none; color: aliceblue;">¡Vamos!</a></span>
-                    </div>
+                    <a href="https://github.com/SergioAndresG/sena-app-fullstack" style="text-decoration: none; color: aliceblue;">
+                        <div class="cube">
+                            <span class="side front">Ver código en GitHub</span>
+                            <span class="side top">¡Vamos!</span>
+                        </div>
+                    </a>
                 </div>
         </div>
     </div>

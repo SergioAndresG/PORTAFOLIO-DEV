@@ -1,10 +1,21 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 
 
 const svgReady = ref(false)
 const lineWidth = ref(0)
 const ExperienceVisible = ref(false)
+
+const circleProgress = ref(0)
+const timelineHeight = ref(0)
+
+// Posición calculada del círculo
+// Posición calculada del círculo
+const circleTop = computed(() => {
+  const startOffset = 60 // Offset inicial del primer punto estático
+  const availableHeight = timelineHeight.value // Altura disponible después del offset
+  return startOffset + (circleProgress.value * availableHeight)
+})
 
 const experiences = ref([
   {
@@ -26,34 +37,60 @@ const experiences = ref([
   },
 ])
 
-// Función para manejar el scroll y animar la línea
 const handleScroll = () => {
   const offStart = 100
   const windowHeight = window.innerHeight
 
-  // Detectar si la sección "Stack" está visible
   const experienceSection = document.querySelector('.experience-section')
+  const timeline = document.querySelector('.timeline')
 
   if (experienceSection) {
     const rect = experienceSection.getBoundingClientRect()
 
     ExperienceVisible.value = rect.top < windowHeight * 0.8
 
-
     if ((rect.top + offStart) < windowHeight && rect.bottom > 0) {
-      // La seccion esta visible
       const sectionProgress = Math.max(0, Math.min(1,
         (windowHeight - rect.top) / (windowHeight * 0.5)
       ))
-
-      lineWidth.value = 200 + ( 680 * sectionProgress )
-    } else if (rect.top >= windowHeight){
+      lineWidth.value = 200 + (680 * sectionProgress)
+    } else if (rect.top >= windowHeight) {
       lineWidth.value = 0
     } else {
       lineWidth.value = 800
     }
   }
+
+  // Calcular posición del círculo
+  if (timeline) {
+    const timelineRect = timeline.getBoundingClientRect()
+    const firstDot = document.querySelector('.timeline-dot-static')
+    
+    // Obtener offset real del primer punto
+    const dotOffset = firstDot 
+      ? (firstDot as HTMLElement).offsetTop 
+      : 30
+    
+    // CAMBIO AQUÍ: Restar el offset inicial para calcular altura disponible
+    timelineHeight.value = timelineRect.height - dotOffset - 60 // Ajusta el -60 según necesites
+
+    // Puntos de trigger
+    const startTrigger = windowHeight * 0.7
+    const endTrigger = windowHeight * 0.3
+    
+    if (timelineRect.top > startTrigger) {
+      circleProgress.value = 0
+    } else if (timelineRect.bottom < endTrigger) {
+      circleProgress.value = 1
+    } else {
+      const totalScrollDistance = (timelineRect.height + startTrigger - endTrigger)
+      const currentPosition = startTrigger - timelineRect.top
+      
+      circleProgress.value = Math.max(0, Math.min(1, currentPosition / totalScrollDistance))
+    }
+  }
 }
+
 
 onMounted(() => {
   svgReady.value = true
@@ -65,6 +102,7 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 </script>
+
 <template>
   <section class="experience-section" id="experience">
     <!-- Línea divisora -->
@@ -75,9 +113,7 @@ onUnmounted(() => {
     <!-- Header -->
     <div class="header" :class="{ 'visible': ExperienceVisible }">
       <h2 class="title">Experiencia Laboral</h2>
-      <p class="subtitle">
-        Mi trayectoria profesional
-      </p>
+      <p class="subtitle">Mi trayectoria profesional</p>
     </div>
 
     <!-- Efectos de fondo -->
@@ -89,56 +125,51 @@ onUnmounted(() => {
     <div class="container">
       <!-- Timeline -->
       <div class="timeline">
+        
+        <!-- Círculo que se mueve  -->
+        <div 
+          class="timeline-moving-dot"
+          :style="{ top: circleTop + 'px' }"
+        >
+          <div class="dot-inner"></div>
+          <div class="dot-glow"></div>
+        </div>
+
         <div 
           v-for="(exp, index) in experiences" 
           :key="index"
           class="timeline-item"
           :class="{ 'right': index % 2 === 0, 'left': index % 2 !== 0 }"
         >
-          <!-- Punto en la línea -->
-          <div class="timeline-dot"></div>
+          <!-- Punto estático (opcional, puedes quitarlo) -->
+          <div class="timeline-dot-static"></div>
 
           <!-- Contenido -->
           <div class="timeline-content">
-            <!-- Fecha -->
             <span class="timeline-date">{{ exp.period }}</span>
 
-            <!-- Card de experiencia -->
             <div class="experience-card">
-              <!-- Logo de la empresa (opcional) -->
               <div class="company-logo" v-if="exp.logo">
                 <img :src="exp.logo" :alt="exp.company" />
               </div>
 
-              <!-- Puesto -->
               <h3 class="job-title">{{ exp.position }}</h3>
 
-              <!-- Empresa + Ubicación -->
               <div class="company-info">
-                <span class="company-name">
-                  {{ exp.company }}
-                </span>
-                <span class="location" v-if="exp.location">
-                  {{ exp.location }}
-                </span>
+                <span class="company-name">{{ exp.company }}</span>
+                <span class="location" v-if="exp.location">{{ exp.location }}</span>
               </div>
 
-              <!-- Tipo de empleo -->
-              <span class="job-type" :class="exp.type">
-                {{ exp.typeLabel }}
-              </span>
+              <span class="job-type" :class="exp.type">{{ exp.typeLabel }}</span>
 
-              <!-- Descripción -->
               <p class="job-description">{{ exp.description }}</p>
 
-              <!-- Logros -->
               <ul class="achievements" v-if="exp.achievements">
                 <li v-for="achievement in exp.achievements" :key="achievement">
-                   {{ achievement }}
+                  {{ achievement }}
                 </li>
               </ul>
 
-              <!-- Tecnologías usadas -->
               <div class="tech-stack">
                 <span 
                   v-for="tech in exp.technologies" 
@@ -155,6 +186,7 @@ onUnmounted(() => {
     </div>
   </section>
 </template>
+
 
 <style scoped>
 /* === RESET Y CONFIG GLOBAL === */
@@ -311,6 +343,47 @@ onUnmounted(() => {
   animation: pulse 2s infinite;
 }
 
+.timeline-moving-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 24px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: top 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+}
+
+.dot-inner {
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #44a2ff, #7d4af5);
+  border: 3px solid #0f172a;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 15px rgba(68, 162, 255, 0.6),
+    0 0 30px rgba(125, 74, 245, 0.4);
+  position: relative;
+  z-index: 2;
+}
+
+.dot-glow {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(
+    circle,
+    rgba(68, 162, 255, 0.5) 0%,
+    rgba(125, 74, 245, 0.2) 40%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
 @keyframes pulse {
   0%, 100% {
     box-shadow: 0 0 0 4px rgba(68, 162, 255, 0.2);
@@ -319,6 +392,45 @@ onUnmounted(() => {
     box-shadow: 0 0 0 8px rgba(68, 162, 255, 0.1);
   }
 }
+
+@keyframes glow-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.4;
+  }
+}
+
+/* Punto estático más sutil */
+.timeline-dot-static {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: rgba(68, 162, 255, 0.3);
+  border: 2px solid rgba(68, 162, 255, 0.5);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .timeline-moving-dot {
+    left: 10px;
+    transform: translateX(0);
+  }
+  
+  .timeline-dot-static {
+    left: 10px;
+    transform: translateX(0);
+  }
+}
+
 /* === CONTENIDO DEL TIMELINE === */
 .timeline-content {
   width: 45%; /* Reducido para evitar overflow */

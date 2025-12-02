@@ -577,6 +577,7 @@ onUnmounted(() => {
 }
 
 .tech-badge {
+  display: inline-block;
   padding: 0.375rem 0.75rem;
   background: rgba(68, 162, 255, 0.1);
   border: 1px solid rgba(68, 162, 255, 0.3);
@@ -585,13 +586,16 @@ onUnmounted(() => {
   font-size: 0.8125rem;
   font-weight: 500;
   transition: all 0.3s ease;
+  will-change: transform;
+
 }
 
 .tech-badge:hover {
   background: rgba(68, 162, 255, 0.2);
-  transform: translateY(-2px);
+  border-color: rgba(68, 162, 255, 0.5);
+  transform: translateY(-5px);
+  cursor: pointer;
 }
-
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
   .timeline::before {

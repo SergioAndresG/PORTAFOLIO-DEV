@@ -360,7 +360,7 @@ onUnmounted(() => {
 .dot-inner {
   width: 16px;
   height: 16px;
-  background: linear-gradient(135deg, #44a2ff, #7d4af5);
+  background: linear-gradient(135deg, #44a2ff, #44a2ff);
   border: 3px solid #0f172a;
   border-radius: 50%;
   box-shadow: 
@@ -402,20 +402,6 @@ onUnmounted(() => {
     transform: scale(1.4);
     opacity: 0.4;
   }
-}
-
-/* Punto estático más sutil */
-.timeline-dot-static {
-  position: absolute;
-  top: 30px;
-  left: 50%;
-  width: 12px;
-  height: 12px;
-  background: rgba(68, 162, 255, 0.3);
-  border: 2px solid rgba(68, 162, 255, 0.5);
-  border-radius: 50%;
-  transform: translateX(-50%);
-  z-index: 5;
 }
 
 /* === RESPONSIVE === */

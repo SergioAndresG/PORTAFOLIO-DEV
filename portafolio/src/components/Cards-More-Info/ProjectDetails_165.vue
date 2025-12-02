@@ -51,7 +51,7 @@ const props = defineProps<{
         <div class="section">
             <h3>✨ Funcionalidades Clave</h3>
             <ul class="detail-list">
-                <li><span class="resaltado">Firmas Digitales:</span> Permite la firma en tiempo real, integrando las firmas a los formatos descargables automáticamente.</li>
+                <li><span class="resaltado">Firmas Digitales:</span> Permite la firma en tiempo real, integrando las firmas a los formatos descargables.</li>
                 <li><span class="resaltado">Ciclo de Vida del Dato:</span> Automatización de la eliminación periódica de fichas y reportes obsoletos, manteniendo la base de datos limpia.</li>
             </ul>
         </div>
@@ -69,7 +69,7 @@ const props = defineProps<{
                     </div>
                     <div class="cube">
                         <span class="side front">Ver código en GitHub</span>
-                        <span class="side top"><a href="https://github.com/SergioAndresG/inscritos_sena_ape" style="text-decoration: none; color: aliceblue;">¡Vamos!</a></span>
+                        <span class="side top"><a href="https://github.com/SergioAndresG/sena-app-fullstack" style="text-decoration: none; color: aliceblue;">¡Vamos!</a></span>
                     </div>
                 </div>
         </div>

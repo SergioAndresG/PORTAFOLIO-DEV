@@ -11,7 +11,7 @@ import Home from '../components/Home.vue'
 
 <template>
   <Header></Header>
-  <Home />
+  <Home id="home"/>
   <AboutMe  id="about-me" />
   <StackSection id="stack"/>
   <ProjectsSection id="projects"/>

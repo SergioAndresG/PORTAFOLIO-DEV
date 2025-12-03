@@ -91,7 +91,6 @@ const projects = ref([
         techs: ['iconPython', 'iconSelenium'],
         color: '#68a063',
         category: 'Backend',
-        github: 'https://github.com/SergioAndresG/inscritos_sena_ape',
     },
     {
         id: 2,
@@ -101,7 +100,6 @@ const projects = ref([
         techs: ['iconPython', 'iconFatApi', 'iconVueJs', 'iconMySQL'],
         color: '#68a063',
         category: 'Full Stack',
-        github: 'https://github.com/SergioAndresG/gestor-f165',
     },
     {
       id: 3,
@@ -111,7 +109,6 @@ const projects = ref([
       techs: ['iconPython', 'iconFatApi', 'iconVueJs', 'iconMySQL', 'iconDocker'],
       color: '#68a063',
       category: 'Full Stack',
-      github: 'primeroorganizo el readme.com'
     },
     {
       id: 4,
@@ -121,7 +118,6 @@ const projects = ref([
       techs: ['iconPython', 'iconSelenium'],
       color: '#68a063',
       category: 'Backend',
-      github: 'primeroorganizo el readme.com'
     }
 ]);
 </script>

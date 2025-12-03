@@ -72,7 +72,7 @@ const handleScroll = () => {
       : 30
     
     // CAMBIO AQUÍ: Restar el offset inicial para calcular altura disponible
-    timelineHeight.value = timelineRect.height - dotOffset - 60 // Ajusta el -60 según necesites
+    timelineHeight.value = (timelineRect.height - dotOffset - 60) * 0.85 // Ajusta el -60 según necesites
 
     // Puntos de trigger
     const startTrigger = windowHeight * 0.7

@@ -19,21 +19,21 @@ const circleTop = computed(() => {
 
 const experiences = ref([
   {
-    position: 'Desarrollador Full Stack',
+    position: 'Desarrollador de Sofware',
     company: 'SENA - Centro de Biotecnología Agropecuaria',
-    location: ' 📍Mosquera Cundinamarca, Colombia',
-    period: '04/2025 - 10/2025',
+    location: '📍 Mosquera, Cundinamarca, Colombia',
+    period: '04/2024 - 10/2024',
     type: 'project',
     typeLabel: 'Presencial',
     logo: 'https://senaterritorium.com/wp-content/uploads/logo-sena-verde-complementario.webp', 
-    description: 'Desarrollo de aplicación web para la gestión de formatos F-165 de etapa productiva, digitalizando el 100% del proceso.',
+    description: 'Desarrollé 2 sistemas de automatización para procesos administrativos del SENA, y una solución web reduciendo tiempos operativos.',
     achievements: [
-      'Implementé sistema de autenticación JWT con roles de usuario',
-      'Desarrollé middleware personalizado para prevenir XSS e inyección SQL',
-      'Integré firma digital en tiempo real dentro de la aplicación',
-      'Automaticé la limpieza de datos obsoletos mediante jobs programados'
+      'Sistema F-165: Plataforma full-stack con autenticación JWT, firma digital con Canvas y generación de documentos (.xlsx).',
+      'RPA Inscripciones: Bot de Selenium que reduce tiempo en registro de aprendices dentro de la plataforma APE.',
+      'Extractor de Empresas: Web scraping con validación de datos y generación automática de reportes Excel.',
+      'Arquitectura escalable con FastAPI, Vue.js 3 y MySQL'
     ],
-    technologies: ['Vue.js', 'FastAPI', 'MySQL', 'Docker', 'JWT']
+    technologies: ['Vue.js', 'FastAPI', 'Python', 'Selenium', 'MySQL', 'JWT']
   },
 ])
 

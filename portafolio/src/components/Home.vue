@@ -3,7 +3,7 @@
 
 
   <!-- Hero Section -->
-  <div class="hero-container">
+  <section class="hero-container" id="home">
     <!-- Contenedor para el texto -->
     <div class="texto-container">
       <svg class="nombre-outline-svg" viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg">
@@ -29,7 +29,7 @@
     <div class="imagen-container">
       <img src="../assets/images/ImagenPor.png" alt="Sergio Garcia" class="imagen">
     </div>
-  </div>
+  </section>
 </template>
 
 

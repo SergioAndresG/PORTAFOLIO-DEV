@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 
 // Estado para controlar si el menú está abierto o cerrado
 const isMenuOpen = ref(false);
@@ -7,12 +7,25 @@ const isMenuOpen = ref(false);
 // Estado para detectar el scroll
 const scroll = ref(false)
 
+// Estado para detectar si estamos cerca del top
+const isNearTop = ref(true)
+
 const handleScroll = () => {
   scroll.value = window.scrollY > 50 // Cuando el usuario baja mas de 50px
+
+  // Si el scroll es mayor a 100px, no estamos en el top
+  isNearTop.value = window.scrollY < 50
 }
 
+
 const scrollTo = (id: string) => {
-  const section = document.getElementById(id)
+  if (id === 'home') {
+    window.scrollTo({top: 0, behavior: 'smooth'})
+    isMenuOpen.value = false
+    return
+  }
+
+    const section = document.getElementById(id)
   if (section) {
     section.scrollIntoView({ behavior: 'smooth' })
     isMenuOpen.value = false // se cierra el Menú
@@ -27,6 +40,20 @@ const toggleMenu = () => {
 // Función para cerrar el menú cuando se hace click en un link
 const closeMenu = () => {
   isMenuOpen.value = false
+}
+
+const firstLinkText = computed(() => {
+  return isNearTop.value? 'Sobre mi' : 'Inicio'
+})
+
+const handleFirstLink = () => {
+  if (isNearTop.value) {
+    // Si estamos arriba, ir a About-Me
+    scrollTo('about-me')
+  } else {
+    // Si hemos dado scroll ir a Home
+    scrollTo('home')
+  }
 }
 
 onMounted(() => {
@@ -59,7 +86,7 @@ onUnmounted(() => {
         :class="{ 'open': isMenuOpen }"
       >
         <li class="li-container">
-          <a @click="scrollTo('about-me')">Sobre mí</a>
+          <a @click="handleFirstLink" :class="{'is-home': !isNearTop}">{{ firstLinkText }}</a>
         </li>
         <li class="li-container">
           <a @click="scrollTo('stack')">Stack</a>

@@ -22,7 +22,7 @@ const experiences = ref([
     position: 'Desarrollador de Sofware',
     company: 'SENA - Centro de Biotecnología Agropecuaria',
     location: '📍 Mosquera, Cundinamarca, Colombia',
-    period: '04/2024 - 10/2024',
+    period: '04/2025 - 10/2025',
     type: 'project',
     typeLabel: 'Presencial',
     logo: 'https://senaterritorium.com/wp-content/uploads/logo-sena-verde-complementario.webp', 

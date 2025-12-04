@@ -142,6 +142,19 @@ header.scroll a {
   font-size: 0.9rem;
 }
 
+a.is-home {
+  color: #1E90FF !important;
+  font-weight: 600;
+}
+
+a.is-home::before {
+  content: '↑ ';
+  font-size: 0.9em;
+  margin-right: 3px;
+  display: inline-block;
+  animation: bounceArrow 1.5s ease infinite;
+}
+
 .nav-container {
   justify-content: center;
   display: flex;
@@ -263,6 +276,16 @@ a:hover {
 .overlay.show {
   opacity: 1;
   visibility: visible;
+}
+
+/*Animación de la flecha */
+@keyframes bounceArrow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
 }
 
 /* ========== RESPONSIVE ========== */

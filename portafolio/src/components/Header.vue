@@ -428,7 +428,7 @@ a:hover {
     top: 0;
     right: -100%; /* Empieza fuera de la pantalla */
     width: 70%;
-    max-width: 200px;
+    max-width: 150px;
     height: 100vh;
     background: rgba(15, 15, 25, 0.98);
     backdrop-filter: blur(20px);

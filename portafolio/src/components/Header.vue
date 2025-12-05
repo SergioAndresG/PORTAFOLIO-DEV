@@ -183,7 +183,7 @@ a.is-home::before {
   height: 47px;
   background: rgba(15, 15, 25, 0.8);
   border: 1px solid rgba(30, 144, 255, 0.6);
-  border-radius: 50%;
+  border-radius: 45%;
   cursor: pointer;
   padding: 13px;
   z-index: 10000;

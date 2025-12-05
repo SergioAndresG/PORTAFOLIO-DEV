@@ -11,6 +11,11 @@ const scroll = ref(false)
 const isNearTop = ref(true)
 
 const handleScroll = () => {
+  const isMobile = window.innerWidth <= 768
+  
+  // Solo aplicar efecto scroll en desktop
+  scroll.value = !isMobile && window.scrollY > 50
+
   scroll.value = window.scrollY > 50 // Cuando el usuario baja mas de 50px
 
   // Si el scroll es mayor a 100px, no estamos en el top
@@ -171,20 +176,22 @@ a.is-home::before {
 
 /* ========== BOTÓN HAMBURGUESA ========== */
 .hamburger-button {
-  display: none; /* Oculto en desktop por defecto */
+  display: none;
   flex-direction: column;
   justify-content: space-around;
-  width: 30px;
-  height: 25px;
-  background: transparent;
-  border: none;
+  width: 55px;
+  height: 47px;
+  background: rgba(15, 15, 25, 0.8);
+  border: 1px solid rgba(30, 144, 255, 0.6);
+  border-radius: 50%;
   cursor: pointer;
-  padding: 0;
+  padding: 13px;
   z-index: 10000;
   position: fixed;
   top: 15px;
   right: 20px;
   transition: all 0.3s ease;
+  animation: floatGlow 4s ease-in-out infinite;
 }
 
 /* Las 3 líneas del hamburguesa */
@@ -198,7 +205,7 @@ a.is-home::before {
 
 /* Animación cuando está activo (X) */
 .hamburger-button.active .line:nth-child(1) {
-  transform: rotate(45deg) translate(4px, 8px);
+  transform: rotate(45deg) translate(5px, 6px);
   background: #1E90FF !important;
 }
 
@@ -208,13 +215,82 @@ a.is-home::before {
 }
 
 .hamburger-button.active .line:nth-child(3) {
-  transform: rotate(-45deg) translate(4px, -8px);
+  transform: rotate(-45deg) translate(4px, -4px);
   background: #1E90FF !important;
 }
 
 /* Hover del botón */
 .hamburger-button:hover .line {
   background: #1E90FF !important;
+}
+
+.hamburger-button::before,
+.hamburger-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid #1E90FF;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: none;
+}
+
+.hamburger-button.active::before {
+  animation: ripple 0.6s ease-out forwards;
+}
+
+.hamburger-button.active::after {
+  animation: ripple 0.6s ease-out 0.15s forwards;
+}
+
+/* Hover más intenso */
+.hamburger-button:hover {
+  border-color: #1E90FF;
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.4),
+    0 0 25px rgba(30, 144, 255, 0.5);
+}
+
+.hamburger-button.active {
+  animation: none;
+  transform: translateY(0);
+  background: rgba(30, 144, 255, 0.15);
+  border-color: #1E90FF;
+  box-shadow: 
+    0 0 20px rgba(30, 144, 255, 0.6),
+    inset 0 0 10px rgba(30, 144, 255, 0.1);
+}
+
+@keyframes ripple {
+  0% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2);
+  }
+}
+
+@keyframes floatGlow {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 
+      0 4px 15px rgba(0, 0, 0, 0.3),
+      0 0 10px rgba(30, 144, 255, 0.2);
+    border-color: rgba(30, 144, 255, 0.5);
+  }
+  50% {
+    transform: translateY(-4px);
+    box-shadow: 
+      0 12px 25px rgba(0, 0, 0, 0.4),
+      0 0 20px rgba(30, 144, 255, 0.4);
+    border-color: rgba(30, 144, 255, 0.8);
+  }
 }
 
 /* ========== MENÚ ========== */
@@ -309,8 +385,24 @@ a:hover {
     border: none;
     border-radius: 0;
     margin: 0;
+    padding: 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     background: rgba(0, 0, 0, 0.95);
+  }
+  
+  header.scroll {
+    width: 100%;
+    height: 60px;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.95);
+  }
+
+  header.scroll a {
+    font-size: 0.95em;
   }
 
   /* Mostrar el botón hamburguesa en móviles */
@@ -336,7 +428,7 @@ a:hover {
     top: 0;
     right: -100%; /* Empieza fuera de la pantalla */
     width: 70%;
-    max-width: 300px;
+    max-width: 200px;
     height: 100vh;
     background: rgba(15, 15, 25, 0.98);
     backdrop-filter: blur(20px);
@@ -394,12 +486,6 @@ a:hover {
     content: "";
   }
 
-  /* Links más grandes en móvil */
-  a {
-    font-size: 20px;
-    display: block;
-    padding: 10px 0;
-  }
 }
 
 /* Para pantallas muy pequeñas */

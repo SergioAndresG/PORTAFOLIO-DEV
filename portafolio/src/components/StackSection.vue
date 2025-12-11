@@ -97,7 +97,7 @@ const techs = ref([
     color: '#42b883'
   },
   {
-    name: 'React',
+    name: 'TypeScript',
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
     category: 'Frontend',
     color: '#61dafb'

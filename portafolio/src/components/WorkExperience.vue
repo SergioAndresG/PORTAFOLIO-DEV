@@ -29,9 +29,9 @@ const experiences = ref([
     description: 'Desarrollé 2 sistemas de automatización para procesos administrativos del SENA, y una solución web reduciendo tiempos operativos.',
     achievements: [
       'Sistema F-165: Plataforma full-stack con autenticación JWT, firma digital con Canvas y generación de documentos (.xlsx).',
+      'Arquitectura escalable con FastAPI, Vue.js 3 y MySQL',
       'RPA Inscripciones: Bot de Selenium que reduce tiempo en registro de aprendices dentro de la plataforma APE.',
       'Extractor de Empresas: Web scraping con validación de datos y generación automática de reportes Excel.',
-      'Arquitectura escalable con FastAPI, Vue.js 3 y MySQL'
     ],
     technologies: ['Vue.js', 'FastAPI', 'Python', 'Selenium', 'MySQL', 'JWT']
   },

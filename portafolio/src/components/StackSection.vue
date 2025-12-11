@@ -79,7 +79,7 @@ const techs = ref([
     color: '#264de4'
   },
   {
-    name: 'React',
+    name: 'TypeScript',
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg',
     category: 'Frontend',
     color: '#61dafb'
@@ -97,7 +97,7 @@ const techs = ref([
     color: '#42b883'
   },
   {
-    name: 'TypeScript',
+    name: 'Recat',
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
     category: 'Frontend',
     color: '#61dafb'

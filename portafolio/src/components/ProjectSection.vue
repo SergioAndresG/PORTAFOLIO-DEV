@@ -79,7 +79,8 @@ const projectsIcons = ref({
     iconGithub: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg',
     iconDocker: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg',
     iconVite: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg',
-    iconSelenium: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/selenium/selenium-original.svg'
+    iconSelenium: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/selenium/selenium-original.svg',
+    iconTypeScript: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg'
 });
 
 const projects = ref([
@@ -97,7 +98,7 @@ const projects = ref([
         title: 'Gestor de Formatos\nF-165',
         description: 'Aplicativo web encargado de generar y gestionar reportes f-165 (Etapa Productiva).',
         icon: "https://i.postimg.cc/26mgHG97/Captura-de-pantalla-2025-10-29-111936.png",
-        techs: ['iconPython', 'iconFatApi', 'iconVueJs', 'iconMySQL'],
+        techs: ['iconPython', 'iconFatApi', 'iconVueJs', 'iconMySQL', 'iconTypeScript'],
         color: '#68a063',
         category: 'Full Stack',
     },
@@ -106,7 +107,7 @@ const projects = ref([
       title: 'Coffe - Bike \n Sistema POS para Cafetería',
       description: 'Aplicación full-stack para gestión de inventario, pedidos de los clientes y ventas.',
       icon: 'https://i.postimg.cc/zvjWwxsB/Captura-de-pantalla-2025-10-30-171308.png',
-      techs: ['iconPython', 'iconFatApi', 'iconVueJs', 'iconMySQL', 'iconDocker'],
+      techs: ['iconPython', 'iconFatApi', 'iconVueJs', 'iconMySQL', 'iconDocker', 'iconTypeScript'],
       color: '#68a063',
       category: 'Full Stack',
     },

@@ -4,7 +4,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const svgReady = ref(false)
 const lineWidth = ref(0)
 const achievementVisible = ref(false)
-const cvPath = new URL('../assets/cv/SergioGarciaCV.pdf', import.meta.url).href
+const cvPath = new URL('../assets/cv/SergioCV.pdf', import.meta.url).href
 
 // Función para manejar el scroll y animar la línea
 const handleScroll = () => {
